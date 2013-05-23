@@ -33,13 +33,13 @@ public abstract class CarLogContract {
     public CarLogContract() {
     }
 
-	/**
-	 * Created in version 1
-	 */
+    /**
+     * Created in version 1
+     */
     public static final class FuelHistory extends CarLogContract {
         public static final String TABLE_NAME = "FuelHistory";
         public static final Uri CONTENT_URI = Uri.parse(CarLogContract.CONTENT_URI + "/" + TABLE_NAME);
-        public static final String[] PROJECTION = new String[] {
+        public static final String[] PROJECTION = new String[]{
                 Columns.HISTORY_ID.getName(),
                 Columns.VEHICLE_ID.getName(),
                 Columns.ODOMETER_READING.getName(),
@@ -55,17 +55,28 @@ public abstract class CarLogContract {
         };
         public static final String TYPE_DIR_TYPE = "vnd.android.cursor.dir/carlog-fuelhistory";
         public static final String TYPE_ELEM_TYPE = "vnd.android.cursor.item/carlog-fuelhistory";
-    	private static final String LOG_TAG = FuelHistory.class.getSimpleName();
+        private static final String LOG_TAG = FuelHistory.class.getSimpleName();
 
         private FuelHistory() {
             // No private constructor
         }
 
         public static void createTable(final SQLiteDatabase db) {
-            db.execSQL("CREATE TABLE " + TABLE_NAME + " (" + Columns.HISTORY_ID.getName() + " " + Columns.HISTORY_ID.getType() + ", " + Columns.VEHICLE_ID.getName() + " " + Columns.VEHICLE_ID.getType() + " NOT NULL" + ", " + Columns.ODOMETER_READING.getName() + " " + Columns.ODOMETER_READING.getType() + " NOT NULL" + ", " + Columns.FUEL_AMOUNT.getName() + " " + Columns.FUEL_AMOUNT.getType() + " NOT NULL" + ", " + Columns.COST_PER_UNIT.getName() + " " + Columns.COST_PER_UNIT.getType() + ", " + Columns.TOTAL_COST.getName() + " " + Columns.TOTAL_COST.getType() + ", " + Columns.PURCHASE_DATE.getName() + " " + Columns.PURCHASE_DATE.getType() + ", " + Columns.NOTES.getName() + " " + Columns.NOTES.getType() + ", " + Columns.LATITUDE.getName() + " " + Columns.LATITUDE.getType() + ", " + Columns.LONGITUDE.getName() + " " + Columns.LONGITUDE.getType() + ", " + Columns.LOCATION.getName() + " " + Columns.LOCATION.getType() + ", PRIMARY KEY (" + Columns.HISTORY_ID.getName() + ")" + ");");
+            db.execSQL("CREATE TABLE " + TABLE_NAME + " (" + Columns.HISTORY_ID.getName() + " " +
+                       Columns.HISTORY_ID.getType() + ", " + Columns.VEHICLE_ID.getName() + " " +
+                       Columns.VEHICLE_ID.getType() + " NOT NULL" + ", " + Columns.ODOMETER_READING.getName() + " " +
+                       Columns.ODOMETER_READING.getType() + " NOT NULL" + ", " + Columns.FUEL_AMOUNT.getName() + " " +
+                       Columns.FUEL_AMOUNT.getType() + " NOT NULL" + ", " + Columns.COST_PER_UNIT.getName() + " " +
+                       Columns.COST_PER_UNIT.getType() + ", " + Columns.TOTAL_COST.getName() + " " +
+                       Columns.TOTAL_COST.getType() + ", " + Columns.PURCHASE_DATE.getName() + " " +
+                       Columns.PURCHASE_DATE.getType() + ", " + Columns.NOTES.getName() + " " +
+                       Columns.NOTES.getType() + ", " + Columns.LATITUDE.getName() + " " + Columns.LATITUDE.getType() +
+                       ", " + Columns.LONGITUDE.getName() + " " + Columns.LONGITUDE.getType() + ", " +
+                       Columns.LOCATION.getName() + " " + Columns.LOCATION.getType() + ", PRIMARY KEY (" +
+                       Columns.HISTORY_ID.getName() + ")" + ");");
         }
 
-		// Version 1 : Creation of the table
+        // Version 1 : Creation of the table
         public static void upgradeTable(final SQLiteDatabase db, int oldVersion, final int newVersion) {
             if (oldVersion < 1) {
                 Log.i(LOG_TAG, "Upgrading from version " + oldVersion + " to " + newVersion + ", data will be lost!");
@@ -129,7 +140,29 @@ public abstract class CarLogContract {
         }
 
         static String getBulkInsertString() {
-            return new StringBuilder("INSERT INTO ").append(TABLE_NAME).append(" ( ").append(Columns.VEHICLE_ID.getName()).append(", ").append(Columns.ODOMETER_READING.getName()).append(", ").append(Columns.FUEL_AMOUNT.getName()).append(", ").append(Columns.COST_PER_UNIT.getName()).append(", ").append(Columns.TOTAL_COST.getName()).append(", ").append(Columns.PURCHASE_DATE.getName()).append(", ").append(Columns.NOTES.getName()).append(", ").append(Columns.LATITUDE.getName()).append(", ").append(Columns.LONGITUDE.getName()).append(", ").append(Columns.LOCATION.getName()).append(" ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)").toString();
+            return new StringBuilder("INSERT INTO ").append(TABLE_NAME)
+                                                    .append(" ( ")
+                                                    .append(Columns.VEHICLE_ID.getName())
+                                                    .append(", ")
+                                                    .append(Columns.ODOMETER_READING.getName())
+                                                    .append(", ")
+                                                    .append(Columns.FUEL_AMOUNT.getName())
+                                                    .append(", ")
+                                                    .append(Columns.COST_PER_UNIT.getName())
+                                                    .append(", ")
+                                                    .append(Columns.TOTAL_COST.getName())
+                                                    .append(", ")
+                                                    .append(Columns.PURCHASE_DATE.getName())
+                                                    .append(", ")
+                                                    .append(Columns.NOTES.getName())
+                                                    .append(", ")
+                                                    .append(Columns.LATITUDE.getName())
+                                                    .append(", ")
+                                                    .append(Columns.LONGITUDE.getName())
+                                                    .append(", ")
+                                                    .append(Columns.LOCATION.getName())
+                                                    .append(" ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)")
+                                                    .toString();
         }
 
         static void bindValuesInBulkInsert(final SQLiteStatement stmt, final ContentValues values) {
@@ -151,30 +184,32 @@ public abstract class CarLogContract {
         }
     }
 
-	/**
-	 * Created in version 1
-	 */
+    /**
+     * Created in version 1
+     */
     public static final class Make extends CarLogContract {
         public static final String TABLE_NAME = "Make";
         public static final Uri CONTENT_URI = Uri.parse(CarLogContract.CONTENT_URI + "/" + TABLE_NAME);
-        public static final String[] PROJECTION = new String[] {
-                Columns.MAKE_ID.getName(),
-                Columns.MAKE_NAME.getName()
+        public static final String[] PROJECTION = new String[]{
+                Columns.MAKE_ID.getName(), Columns.MAKE_NAME.getName()
         };
         public static final String TYPE_DIR_TYPE = "vnd.android.cursor.dir/carlog-make";
         public static final String TYPE_ELEM_TYPE = "vnd.android.cursor.item/carlog-make";
-    	private static final String LOG_TAG = Make.class.getSimpleName();
+        private static final String LOG_TAG = Make.class.getSimpleName();
 
         private Make() {
             // No private constructor
         }
 
         public static void createTable(final SQLiteDatabase db) {
-            db.execSQL("CREATE TABLE " + TABLE_NAME + " (" + Columns.MAKE_ID.getName() + " " + Columns.MAKE_ID.getType() + ", " + Columns.MAKE_NAME.getName() + " " + Columns.MAKE_NAME.getType() + " UNIQUE" + " NOT NULL" + ", PRIMARY KEY (" + Columns.MAKE_ID.getName() + ")" + ");");
+            db.execSQL(
+                    "CREATE TABLE " + TABLE_NAME + " (" + Columns.MAKE_ID.getName() + " " + Columns.MAKE_ID.getType() +
+                    ", " + Columns.MAKE_NAME.getName() + " " + Columns.MAKE_NAME.getType() + " UNIQUE" + " NOT NULL" +
+                    ", PRIMARY KEY (" + Columns.MAKE_ID.getName() + ")" + ");");
             db.execSQL("CREATE INDEX Make_MakeName on " + TABLE_NAME + "(" + Columns.MAKE_NAME.getName() + ");");
         }
 
-		// Version 1 : Creation of the table
+        // Version 1 : Creation of the table
         public static void upgradeTable(final SQLiteDatabase db, int oldVersion, final int newVersion) {
             if (oldVersion < 1) {
                 Log.i(LOG_TAG, "Upgrading from version " + oldVersion + " to " + newVersion + ", data will be lost!");
@@ -228,7 +263,11 @@ public abstract class CarLogContract {
         }
 
         static String getBulkInsertString() {
-            return new StringBuilder("INSERT INTO ").append(TABLE_NAME).append(" ( ").append(Columns.MAKE_NAME.getName()).append(" ) VALUES (?)").toString();
+            return new StringBuilder("INSERT INTO ").append(TABLE_NAME)
+                                                    .append(" ( ")
+                                                    .append(Columns.MAKE_NAME.getName())
+                                                    .append(" ) VALUES (?)")
+                                                    .toString();
         }
 
         static void bindValuesInBulkInsert(final SQLiteStatement stmt, final ContentValues values) {
@@ -240,31 +279,33 @@ public abstract class CarLogContract {
         }
     }
 
-	/**
-	 * Created in version 1
-	 */
+    /**
+     * Created in version 1
+     */
     public static final class Model extends CarLogContract {
         public static final String TABLE_NAME = "Model";
         public static final Uri CONTENT_URI = Uri.parse(CarLogContract.CONTENT_URI + "/" + TABLE_NAME);
-        public static final String[] PROJECTION = new String[] {
-                Columns.MODEL_ID.getName(),
-                Columns.MODEL_NAME.getName(),
-                Columns.MAKE_ID.getName()
+        public static final String[] PROJECTION = new String[]{
+                Columns.MODEL_ID.getName(), Columns.MODEL_NAME.getName(), Columns.MAKE_ID.getName()
         };
         public static final String TYPE_DIR_TYPE = "vnd.android.cursor.dir/carlog-model";
         public static final String TYPE_ELEM_TYPE = "vnd.android.cursor.item/carlog-model";
-    	private static final String LOG_TAG = Model.class.getSimpleName();
+        private static final String LOG_TAG = Model.class.getSimpleName();
 
         private Model() {
             // No private constructor
         }
 
         public static void createTable(final SQLiteDatabase db) {
-            db.execSQL("CREATE TABLE " + TABLE_NAME + " (" + Columns.MODEL_ID.getName() + " " + Columns.MODEL_ID.getType() + ", " + Columns.MODEL_NAME.getName() + " " + Columns.MODEL_NAME.getType() + " UNIQUE" + " NOT NULL" + ", " + Columns.MAKE_ID.getName() + " " + Columns.MAKE_ID.getType() + " NOT NULL" + ", PRIMARY KEY (" + Columns.MODEL_ID.getName() + ")" + ");");
+            db.execSQL("CREATE TABLE " + TABLE_NAME + " (" + Columns.MODEL_ID.getName() + " " +
+                       Columns.MODEL_ID.getType() + ", " + Columns.MODEL_NAME.getName() + " " +
+                       Columns.MODEL_NAME.getType() + " UNIQUE" + " NOT NULL" + ", " + Columns.MAKE_ID.getName() + " " +
+                       Columns.MAKE_ID.getType() + " NOT NULL" + ", PRIMARY KEY (" + Columns.MODEL_ID.getName() + ")" +
+                       ");");
             db.execSQL("CREATE INDEX Model_ModelName on " + TABLE_NAME + "(" + Columns.MODEL_NAME.getName() + ");");
         }
 
-		// Version 1 : Creation of the table
+        // Version 1 : Creation of the table
         public static void upgradeTable(final SQLiteDatabase db, int oldVersion, final int newVersion) {
             if (oldVersion < 1) {
                 Log.i(LOG_TAG, "Upgrading from version " + oldVersion + " to " + newVersion + ", data will be lost!");
@@ -319,7 +360,13 @@ public abstract class CarLogContract {
         }
 
         static String getBulkInsertString() {
-            return new StringBuilder("INSERT INTO ").append(TABLE_NAME).append(" ( ").append(Columns.MODEL_NAME.getName()).append(", ").append(Columns.MAKE_ID.getName()).append(" ) VALUES (?, ?)").toString();
+            return new StringBuilder("INSERT INTO ").append(TABLE_NAME)
+                                                    .append(" ( ")
+                                                    .append(Columns.MODEL_NAME.getName())
+                                                    .append(", ")
+                                                    .append(Columns.MAKE_ID.getName())
+                                                    .append(" ) VALUES (?, ?)")
+                                                    .toString();
         }
 
         static void bindValuesInBulkInsert(final SQLiteStatement stmt, final ContentValues values) {
@@ -332,13 +379,13 @@ public abstract class CarLogContract {
         }
     }
 
-	/**
-	 * Created in version 1
-	 */
+    /**
+     * Created in version 1
+     */
     public static final class Vehicle extends CarLogContract {
         public static final String TABLE_NAME = "Vehicle";
         public static final Uri CONTENT_URI = Uri.parse(CarLogContract.CONTENT_URI + "/" + TABLE_NAME);
-        public static final String[] PROJECTION = new String[] {
+        public static final String[] PROJECTION = new String[]{
                 Columns.VEHICLE_ID.getName(),
                 Columns.NAME.getName(),
                 Columns.YEAR.getName(),
@@ -353,17 +400,25 @@ public abstract class CarLogContract {
         };
         public static final String TYPE_DIR_TYPE = "vnd.android.cursor.dir/carlog-vehicle";
         public static final String TYPE_ELEM_TYPE = "vnd.android.cursor.item/carlog-vehicle";
-    	private static final String LOG_TAG = Vehicle.class.getSimpleName();
+        private static final String LOG_TAG = Vehicle.class.getSimpleName();
 
         private Vehicle() {
             // No private constructor
         }
 
         public static void createTable(final SQLiteDatabase db) {
-            db.execSQL("CREATE TABLE " + TABLE_NAME + " (" + Columns.VEHICLE_ID.getName() + " " + Columns.VEHICLE_ID.getType() + ", " + Columns.NAME.getName() + " " + Columns.NAME.getType() + " UNIQUE" + ", " + Columns.YEAR.getName() + " " + Columns.YEAR.getType() + ", " + Columns.MAKE_ID.getName() + " " + Columns.MAKE_ID.getType() + " NOT NULL" + ", " + Columns.MODEL_ID.getName() + " " + Columns.MODEL_ID.getType() + " NOT NULL" + ", " + Columns.LICENSE_PLATE.getName() + " " + Columns.LICENSE_PLATE.getType() + ", " + Columns.VIN.getName() + " " + Columns.VIN.getType() + ", " + Columns.NOTES.getName() + " " + Columns.NOTES.getType() + ", " + Columns.ACTIVE.getName() + " " + Columns.ACTIVE.getType() + ", PRIMARY KEY (" + Columns.VEHICLE_ID.getName() + ")" + ");");
+            db.execSQL("CREATE TABLE " + TABLE_NAME + " (" + Columns.VEHICLE_ID.getName() + " " +
+                       Columns.VEHICLE_ID.getType() + ", " + Columns.NAME.getName() + " " + Columns.NAME.getType() +
+                       " UNIQUE" + ", " + Columns.YEAR.getName() + " " + Columns.YEAR.getType() + ", " +
+                       Columns.MAKE_ID.getName() + " " + Columns.MAKE_ID.getType() + " NOT NULL" + ", " +
+                       Columns.MODEL_ID.getName() + " " + Columns.MODEL_ID.getType() + " NOT NULL" + ", " +
+                       Columns.LICENSE_PLATE.getName() + " " + Columns.LICENSE_PLATE.getType() + ", " +
+                       Columns.VIN.getName() + " " + Columns.VIN.getType() + ", " + Columns.NOTES.getName() + " " +
+                       Columns.NOTES.getType() + ", " + Columns.ACTIVE.getName() + " " + Columns.ACTIVE.getType() +
+                       ", PRIMARY KEY (" + Columns.VEHICLE_ID.getName() + ")" + ");");
         }
 
-		// Version 1 : Creation of the table
+        // Version 1 : Creation of the table
         public static void upgradeTable(final SQLiteDatabase db, int oldVersion, final int newVersion) {
             if (oldVersion < 1) {
                 Log.i(LOG_TAG, "Upgrading from version " + oldVersion + " to " + newVersion + ", data will be lost!");
@@ -426,7 +481,25 @@ public abstract class CarLogContract {
         }
 
         static String getBulkInsertString() {
-            return new StringBuilder("INSERT INTO ").append(TABLE_NAME).append(" ( ").append(Columns.NAME.getName()).append(", ").append(Columns.YEAR.getName()).append(", ").append(Columns.MAKE_ID.getName()).append(", ").append(Columns.MODEL_ID.getName()).append(", ").append(Columns.LICENSE_PLATE.getName()).append(", ").append(Columns.VIN.getName()).append(", ").append(Columns.NOTES.getName()).append(", ").append(Columns.ACTIVE.getName()).append(" ) VALUES (?, ?, ?, ?, ?, ?, ?, ?)").toString();
+            return new StringBuilder("INSERT INTO ").append(TABLE_NAME)
+                                                    .append(" ( ")
+                                                    .append(Columns.NAME.getName())
+                                                    .append(", ")
+                                                    .append(Columns.YEAR.getName())
+                                                    .append(", ")
+                                                    .append(Columns.MAKE_ID.getName())
+                                                    .append(", ")
+                                                    .append(Columns.MODEL_ID.getName())
+                                                    .append(", ")
+                                                    .append(Columns.LICENSE_PLATE.getName())
+                                                    .append(", ")
+                                                    .append(Columns.VIN.getName())
+                                                    .append(", ")
+                                                    .append(Columns.NOTES.getName())
+                                                    .append(", ")
+                                                    .append(Columns.ACTIVE.getName())
+                                                    .append(" ) VALUES (?, ?, ?, ?, ?, ?, ?, ?)")
+                                                    .toString();
         }
 
         static void bindValuesInBulkInsert(final SQLiteStatement stmt, final ContentValues values) {

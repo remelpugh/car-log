@@ -1,3 +1,19 @@
+/*
+ * Copyright (c) 2013 Remel Pugh
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * 	http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package com.dabay6.android.apps.carlog.data.DTO;
 
 import android.content.ContentValues;
@@ -58,6 +74,7 @@ public class FuelHistoryDTO implements Parcelable {
     public void setCostPerUnit(final Float value) {
         costPerUnit = value;
     }
+
     public Float getFuelAmount() {
         return fuelAmount;
     }
@@ -65,6 +82,7 @@ public class FuelHistoryDTO implements Parcelable {
     public void setFuelAmount(final Float value) {
         fuelAmount = value;
     }
+
     public Integer getHistoryId() {
         return historyId;
     }
@@ -72,6 +90,7 @@ public class FuelHistoryDTO implements Parcelable {
     public void setHistoryId(final Integer value) {
         historyId = value;
     }
+
     public Float getLatitude() {
         return latitude;
     }
@@ -79,6 +98,7 @@ public class FuelHistoryDTO implements Parcelable {
     public void setLatitude(final Float value) {
         latitude = value;
     }
+
     public String getLocation() {
         return location;
     }
@@ -86,6 +106,7 @@ public class FuelHistoryDTO implements Parcelable {
     public void setLocation(final String value) {
         location = value;
     }
+
     public Float getLongitude() {
         return longitude;
     }
@@ -93,6 +114,7 @@ public class FuelHistoryDTO implements Parcelable {
     public void setLongitude(final Float value) {
         longitude = value;
     }
+
     public String getName() {
         return name;
     }
@@ -100,6 +122,7 @@ public class FuelHistoryDTO implements Parcelable {
     public void setName(final String value) {
         name = value;
     }
+
     public String getNotes() {
         return notes;
     }
@@ -107,6 +130,7 @@ public class FuelHistoryDTO implements Parcelable {
     public void setNotes(final String value) {
         notes = value;
     }
+
     public Float getOdometerReading() {
         return odometerReading;
     }
@@ -114,6 +138,7 @@ public class FuelHistoryDTO implements Parcelable {
     public void setOdometerReading(final Float value) {
         odometerReading = value;
     }
+
     public Long getPurchaseDate() {
         return purchaseDate;
     }
@@ -121,6 +146,7 @@ public class FuelHistoryDTO implements Parcelable {
     public void setPurchaseDate(final Long value) {
         purchaseDate = value;
     }
+
     public Float getTotalCost() {
         return totalCost;
     }
@@ -128,6 +154,7 @@ public class FuelHistoryDTO implements Parcelable {
     public void setTotalCost(final Float value) {
         totalCost = value;
     }
+
     public Long getVehicleId() {
         return vehicleId;
     }
@@ -135,6 +162,7 @@ public class FuelHistoryDTO implements Parcelable {
     public void setVehicleId(final Long value) {
         vehicleId = value;
     }
+
     public int describeContents() {
         return 0;
     }

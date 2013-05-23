@@ -28,7 +28,7 @@ import com.dabay6.android.apps.carlog.data.provider.util.ColumnMetadata;
 @SuppressWarnings("unused")
 public class StatisticsTotal extends CarLogContract {
     public static final String PATH = "statistics/total";
-    public static final Uri CONTENT_URI = Uri.parse(CarLogContract.CONTENT_URI + "/" +  PATH);
+    public static final Uri CONTENT_URI = Uri.parse(CarLogContract.CONTENT_URI + "/" + PATH);
     public static final String[] PROJECTION = new String[]{
             Columns.VEHICLE_ID.getName(),
             Columns.TOTAL_DISTANCE.getName(),

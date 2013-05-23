@@ -1,3 +1,19 @@
+/*
+ * Copyright (c) 2013 Remel Pugh
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * 	http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package com.dabay6.android.apps.carlog.ui.fuel;
 
 import android.app.Activity;
@@ -22,8 +38,8 @@ import com.utils.android.util.IntentUtils.ActivityIntentBuilder;
  * @version 1.0
  */
 @SuppressWarnings("unused")
-public class FuelHistoryEditActivity extends BaseFragmentActivity implements OnDateTimePickerListener,
-                                                                             OnEntityEditListener {
+public class FuelHistoryEditActivity extends BaseFragmentActivity
+        implements OnDateTimePickerListener, OnEntityEditListener {
     public static final String EXTRA_FUEL_HISTORY_ID = Intents.INTENT_EXTRA_PREFIX + "fuelhistory.id";
     public static final String EXTRA_VEHICLE_ID = Intents.INTENT_EXTRA_PREFIX + "vehicle.id";
     private final static String FRAGMENT_TAG = "fuelhistory";
