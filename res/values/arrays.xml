@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="statistics_tabs">
+        <item>Totals</item>
+        <item>Fill-Ups</item>
+        <item>Averages</item>
+    </string-array>
+</resources>

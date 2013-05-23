@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <plurals name="fuel_history_delete">
+        <item quantity="one">Do you wish to delete this history record?</item>
+        <item quantity="other">Do you wish to delete these %d history records?</item>
+    </plurals>
+    <plurals name="vehicle_delete">
+        <item quantity="one">Do you wish to delete this vehicle and it\'s history?</item>
+        <item quantity="other">Do you wish to delete these %d vehicles and it\'s history?</item>
+    </plurals>
+</resources>

@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          package="com.dabay6.android.apps.carlog"
+          android:installLocation="auto"
+          android:versionCode="1"
+          android:versionName="1.0">
+
+    <uses-sdk
+            android:minSdkVersion="10"
+            android:targetSdkVersion="17" />
+
+    <permission
+            android:name="com.dabay6.android.apps.carlog.permission.MAPS_RECEIVE"
+            android:protectionLevel="signature" />
+
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="com.dabay6.android.apps.carlog.permission.MAPS_RECEIVE" />
+    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
+
+    <!--suppress AndroidDomInspection -->
+    <uses-feature
+            android:glEsVersion="0x00020000"
+            android:required="true" />
+
+    <application
+            android:allowBackup="true"
+            android:backupAgent=".backup.CarLogBackupAgent"
+            android:hardwareAccelerated="true"
+            android:icon="@drawable/ic_launcher"
+            android:label="@string/app_name"
+            android:name=".app.CarLogApplication"
+            android:theme="@style/AppTheme">
+
+        <meta-data
+                android:name="com.google.android.backup.api_key"
+                android:value="AEdPqrEAAAAI_bRb-J6DiDfJZ94yK-SkWQC9jAiRMvnJsTUOYg" />
+        <meta-data
+                android:name="com.google.android.maps.v2.API_KEY"
+                android:value="AIzaSyDg4C_o-twFLm1QpCcduV9z_7JzAoiJPvw" />
+
+        <activity
+                android:name=".ui.HomeActivity"
+                android:configChanges="orientation|keyboardHidden"
+                android:label="@string/app_name"
+                android:launchMode="singleTop">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity
+                android:name=".ui.SettingsActivity"
+                android:label="@string/app_name">
+            <meta-data
+                    android:name="android.support.PARENT_ACTIVITY"
+                    android:value=".ui.HomeActivity" />
+        </activity>
+
+        <activity
+                android:name=".ui.fuel.FuelHistoryListActivity"
+                android:label="@string/fuel_history">
+            <meta-data
+                    android:name="android.support.PARENT_ACTIVITY"
+                    android:value=".ui.HomeActivity" />
+        </activity>
+
+        <activity
+                android:name=".ui.fuel.FuelHistoryEditActivity"
+                android:label="@string/fuel_history_new">
+            <meta-data
+                    android:name="android.support.PARENT_ACTIVITY"
+                    android:value=".ui.HomeActivity" />
+        </activity>
+
+        <activity
+                android:name=".ui.statistics.StatisticsActivity"
+                android:label="@string/statistics">
+            <meta-data
+                    android:name="android.support.PARENT_ACTIVITY"
+                    android:value=".ui.HomeActivity" />
+        </activity>
+
+        <activity
+                android:name=".ui.vehicle.VehicleHomeActivity"
+                android:label="@string/vehicles">
+            <meta-data
+                    android:name="android.support.PARENT_ACTIVITY"
+                    android:value=".ui.HomeActivity" />
+        </activity>
+
+        <activity
+                android:name=".ui.vehicle.VehicleListActivity"
+                android:label="@string/vehicles">
+            <meta-data
+                    android:name="android.support.PARENT_ACTIVITY"
+                    android:value=".ui.HomeActivity" />
+        </activity>
+
+        <activity
+                android:name=".ui.vehicle.VehicleEditActivity"
+                android:label="@string/vehicle_new" />
+
+        <activity android:name="com.dropbox.sync.android.DbxAuthActivity" />
+        <activity
+                android:name="com.dropbox.client2.android.AuthActivity"
+                android:launchMode="singleTask">
+            <intent-filter>
+                <data android:scheme="db-uo324va9vacupmm" />
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.BROWSABLE" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <provider
+                android:name="com.dabay6.android.apps.carlog.data.provider.CarLogProviderExtension"
+                android:authorities="com.dabay6.android.apps.carlog.provider"
+                android:exported="false"
+                android:label="@string/app_name"
+                android:syncable="true" />
+
+        <service android:name="com.dabay6.android.apps.carlog.app.InitializationIntentService" />
+
+        <service
+                android:name="com.dropbox.sync.android.DbxSyncService"
+                android:enabled="true"
+                android:exported="false"
+                android:label="Dropbox Sync" />
+    </application>
+</manifest>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="AppTheme"
+           parent="@style/Theme.Sherlock.Light.DarkActionBar">
+        <item name="android:autoCompleteTextViewStyle">@style/Widget.AutoCompleteTextViewLight</item>
+        <item name="android:dropDownItemStyle">@style/Widget.DropDownItemLight</item>
+        <item name="util__buttonBarStyle">@style/ButtonBarStyle</item>
+    </style>
+
+</resources>

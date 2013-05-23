@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+    <include layout="@layout/button_bar" />
+
+    <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/buttonBar"
+            android:layout_alignParentTop="true">
+
+        <LinearLayout
+                style="@style/Form"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+            <TextView
+                    style="@style/FormFieldLabel"
+                    android:text="@string/fuel_history_date" />
+
+            <EditText
+                    style="@style/FormField"
+                    android:id="@+id/date_time"
+                    android:editable="false"
+                    android:hint="@string/fuel_history_date"
+                    android:inputType="datetime" />
+
+            <TextView
+                    style="@style/FormFieldLabel"
+                    android:text="@string/fuel_history_odom" />
+
+            <EditText
+                    style="@style/FormField"
+                    android:id="@+id/odometer"
+                    android:hint="@string/fuel_history_odom"
+                    android:inputType="numberDecimal"
+                    android:imeOptions="actionNext"
+                    android:nextFocusDown="@+id/volume">
+
+                <requestFocus />
+            </EditText>
+
+            <TextView
+                    style="@style/FormFieldLabel"
+                    android:text="@string/fuel_history_volume" />
+
+            <EditText
+                    style="@style/FormField"
+                    android:id="@+id/volume"
+                    android:hint="@string/fuel_history_3_decimal"
+                    android:inputType="numberDecimal"
+                    android:imeOptions="actionNext"
+                    android:nextFocusDown="@+id/price" />
+
+            <TextView
+                    style="@style/FormFieldLabel"
+                    android:text="@string/fuel_history_price" />
+
+            <EditText
+                    style="@style/FormField"
+                    android:id="@+id/price"
+                    android:hint="@string/fuel_history_3_decimal"
+                    android:inputType="numberDecimal"
+                    android:imeOptions="actionNext"
+                    android:nextFocusDown="@+id/total" />
+
+            <TextView
+                    style="@style/FormFieldLabel"
+                    android:text="@string/fuel_history_total" />
+
+            <EditText
+                    style="@style/FormField"
+                    android:id="@+id/total"
+                    android:hint="@string/fuel_history_money"
+                    android:inputType="numberDecimal"
+                    android:imeOptions="actionNext"
+                    android:nextFocusDown="@+id/notes" />
+
+            <TextView
+                    style="@style/FormFieldLabel"
+                    android:text="@string/fuel_history_notes" />
+
+            <EditText
+                    style="@style/FormField"
+                    android:id="@+id/notes"
+                    android:hint="@string/fuel_history_notes"
+                    android:inputType="textMultiLine"
+                    android:imeOptions="actionDone" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</RelativeLayout>
