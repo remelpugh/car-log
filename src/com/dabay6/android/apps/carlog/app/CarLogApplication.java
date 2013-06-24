@@ -20,6 +20,7 @@ import android.app.backup.BackupManager;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
+import com.crashlytics.android.Crashlytics;
 import com.dabay6.android.apps.carlog.BuildConfig;
 import com.dabay6.android.apps.carlog.R.string;
 import com.dropbox.sync.android.DbxAccountManager;
@@ -101,6 +102,8 @@ public class CarLogApplication extends ApplicationExtension implements OnSharedP
         super.onCreate();
 
         backupManager = new BackupManager(this);
+
+        Crashlytics.start(this);
 
         SharedPreferenceUtils.get(this).registerOnSharedPreferenceChangeListener(this);
     }

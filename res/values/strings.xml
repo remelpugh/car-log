@@ -18,6 +18,7 @@
 <resources>
     <string name="app_name">Car Log</string>
     <string name="delete_data">Deleting data&#8230;</string>
+    <string name="home">Home</string>
     <string name="initializing_message">Initializing data&#8230;</string>
     <string name="field_required">A value is required</string>
     <string name="miles_per_gallon">%.3f mpg</string>
@@ -49,10 +50,13 @@
     <string name="fuel_history_add">Add Fuel history entry</string>
     <string name="fuel_history_cost_per_unit">%s/gal</string>
     <string name="fuel_history_date">Date/Time</string>
+    <string name="fuel_history_detail_empty">Select history to display the details</string>
+    <string name="fuel_history_details">Fuel History Details</string>
     <string name="fuel_history_edit">Edit Fuel History</string>
     <string name="fuel_history_empty">No fuel history records found</string>
     <string name="fuel_history_odom">Odometer Reading</string>
     <string name="fuel_history_miles">%.0f miles</string>
+    <string name="fuel_history_mpg">Miles per gallon</string>
     <string name="fuel_history_new">New Fuel History Record</string>
     <string name="fuel_history_notes">Notes</string>
     <string name="fuel_history_money">0.00</string>
@@ -76,6 +80,7 @@
     <!-- VEHICLE STRINGS -->
     <string name="vehicle_add">Add New Vehicle</string>
     <string name="vehicle_create_another">Would you like to create another vehicle?</string>
+    <string name="vehicle_detail_empty">Select vehicle to display the details</string>
     <string name="vehicle_edit">Edit Vehicle</string>
     <string name="vehicle_empty">No vehicles found</string>
     <string name="vehicle_license_plate">License Plate</string>
@@ -114,6 +119,5 @@
         </pre>
         ]]>
     </string>
-    <string name="vehicle_detail_empty">Select vehicle to display the details</string>
     <!-- END DROPBOX STRINGS -->
 </resources>

@@ -21,8 +21,6 @@ import android.content.Context;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.v4.app.LoaderManager;
-import android.support.v4.content.CursorLoader;
 import android.support.v4.content.Loader;
 import android.text.Editable;
 import android.text.TextUtils;
@@ -40,10 +38,8 @@ import com.dabay6.android.apps.carlog.R.layout;
 import com.dabay6.android.apps.carlog.R.menu;
 import com.dabay6.android.apps.carlog.configuration.Constants;
 import com.dabay6.android.apps.carlog.data.DTO.FuelHistoryDTO;
-import com.dabay6.android.apps.carlog.data.DTO.VehicleDTO;
 import com.dabay6.android.apps.carlog.data.provider.CarLogContract.FuelHistory;
 import com.dabay6.android.apps.carlog.data.provider.CarLogContract.FuelHistory.Columns;
-import com.dabay6.android.apps.carlog.data.provider.CarLogContract.Vehicle;
 import com.dabay6.android.apps.carlog.ui.base.fragments.BaseEditFragment;
 import com.utils.android.logging.Logger;
 import com.utils.android.ui.dialogs.DateTimePickerDialogFragment;
@@ -57,11 +53,10 @@ import com.utils.android.validation.RequiredValidator;
  * @author Remel Pugh
  * @version 1.0
  */
-public class FuelHistoryEditFragment extends BaseEditFragment implements LoaderManager.LoaderCallbacks<Cursor> {
+public class FuelHistoryEditFragment extends BaseEditFragment {//implements LoaderManager.LoaderCallbacks<Cursor> {
     private static final String PARAMS_VEHICLE_ID = "PARAMS_VEHICLE_ID";
     @SuppressWarnings("unused")
     private final static String TAG = Logger.makeTag(FuelHistoryEditFragment.class);
-    private static final int VEHICLE_LOADER_ID = ENTITY_LOADER_ID + 1;
     private final TextWatcher priceWatcher = new TextWatcher() {
         @Override
         public void afterTextChanged(final Editable s) {
@@ -168,42 +163,6 @@ public class FuelHistoryEditFragment extends BaseEditFragment implements LoaderM
         super.onActivityCreated(savedInstanceState);
 
         vehicleId = bundle.getLong(PARAMS_VEHICLE_ID);
-
-        getLoaderManager().initLoader(VEHICLE_LOADER_ID, null, this);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public Loader<Cursor> onCreateLoader(final int i, final Bundle bundle) {
-        if (i == VEHICLE_LOADER_ID) {
-            final String selection;
-            final String[] selectionArgs;
-
-            selection = String.format("%s.%s = ?", Vehicle.TABLE_NAME, Vehicle.Columns.VEHICLE_ID.getName());
-            selectionArgs = new String[]{vehicleId.toString()};
-
-            return new CursorLoader(applicationContext, Vehicle.CONTENT_URI, Vehicle.PROJECTION, selection,
-                                    selectionArgs, null);
-        }
-
-        return super.onCreateLoader(i, bundle);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public void onLoadFinished(final Loader<Cursor> cursorLoader, final Cursor cursor) {
-        if (cursorLoader.getId() == VEHICLE_LOADER_ID) {
-            final VehicleDTO vehicle = VehicleDTO.newInstance(cursor);
-
-            getSherlockActivity().getSupportActionBar().setSubtitle(vehicle.getName());
-        }
-        else {
-            super.onLoadFinished(cursorLoader, cursor);
-        }
     }
 
     /**
@@ -305,7 +264,8 @@ public class FuelHistoryEditFragment extends BaseEditFragment implements LoaderM
     protected void loadForm(final Cursor cursor) {
         history = FuelHistoryDTO.newInstance(cursor);
 
-        getActivity().setTitle(R.string.fuel_history_edit);
+        setTitle(R.string.fuel_history_edit);
+        setSubtitle(history.getName());
 
         notes.setText(history.getNotes());
         odometer.setText(history.getOdometerReading().toString());

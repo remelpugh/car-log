@@ -20,11 +20,12 @@ import android.R.anim;
 import android.app.AlertDialog.Builder;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import android.database.Cursor;
 import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
 import android.text.TextUtils;
 import android.view.View;
+import com.actionbarsherlock.view.Menu;
+import com.actionbarsherlock.view.MenuItem;
 import com.dabay6.android.apps.carlog.R;
 import com.dabay6.android.apps.carlog.R.id;
 import com.dabay6.android.apps.carlog.R.layout;
@@ -39,8 +40,10 @@ import com.dabay6.android.apps.carlog.ui.base.fragments.BaseEditFragment.OnEntit
 import com.dabay6.android.apps.carlog.ui.vehicle.fragments.VehicleDetailFragment;
 import com.dabay6.android.apps.carlog.ui.vehicle.fragments.VehicleEditFragment;
 import com.dabay6.android.apps.carlog.ui.vehicle.fragments.VehicleListFragment;
+import com.dabay6.android.apps.carlog.util.NavigationDrawerUtils;
+import com.utils.android.adapters.BaseNavigationListItem;
 import com.utils.android.logging.Logger;
-import com.utils.android.ui.BaseFragmentActivity;
+import com.utils.android.ui.BaseNavigationDrawerActivity;
 
 import java.util.List;
 import java.util.Set;
@@ -51,13 +54,12 @@ import java.util.Set;
  * @author Remel Pugh
  * @version 1.0
  */
-@SuppressWarnings("unused")
-public class VehicleHomeActivity extends BaseFragmentActivity
+public class VehicleHomeActivity extends BaseNavigationDrawerActivity
         implements OnEntityDetailListener, OnEntityEditListener, OnEntityListListener {
     public static final String VEHICLE_EXTRA_NONE = Intents.INTENT_EXTRA_PREFIX + "vehicle.none";
+    @SuppressWarnings("unused")
     private final static String TAG = Logger.makeTag(VehicleHomeActivity.class);
     private VehicleDetailFragment detailFragment;
-    private VehicleEditFragment editFragment;
     private VehicleListFragment listFragment;
     private boolean noVehicles = false;
     private CharSequence savedTitle;
@@ -79,23 +81,6 @@ public class VehicleHomeActivity extends BaseFragmentActivity
      * {@inheritDoc}
      */
     @Override
-    public void onEntityCancel() {
-        if (!isDualPane()) {
-            onBackPressed();
-        }
-        else {
-            final VehicleEditFragment fragment = fragmentFinder.find("vehicle_edit");
-
-            if (fragment != null) {
-                fragment.dismiss();
-            }
-        }
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
     public void onEntityAdd() {
         final VehicleEditFragment fragment = VehicleEditFragment.newInstance();
 
@@ -109,7 +94,25 @@ public class VehicleHomeActivity extends BaseFragmentActivity
             transaction.addToBackStack(null).commit();
         }
         else {
+            fragment.setDualPane(isDualPane());
             fragment.show(getSupportFragmentManager(), "vehicle_edit");
+        }
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void onEntityCancel() {
+        if (!isDualPane()) {
+            onBackPressed();
+        }
+        else {
+            final VehicleEditFragment fragment = fragmentFinder.find("vehicle_edit");
+
+            if (fragment != null) {
+                fragment.dismiss();
+            }
         }
     }
 
@@ -169,32 +172,8 @@ public class VehicleHomeActivity extends BaseFragmentActivity
             transaction.addToBackStack(null).commit();
         }
         else {
+            fragment.setDualPane(isDualPane());
             fragment.show(getSupportFragmentManager(), "vehicle_edit");
-        }
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public void onEntitySelected(final int position, final long id) {
-        final VehicleCursorAdapter adapter = (VehicleCursorAdapter) listFragment.getListAdapter();
-        final Cursor cursor = (Cursor) adapter.getItem(position);
-
-        if (cursor != null) {
-            if (!isDualPane()) {
-                final FragmentTransaction transaction = startTransaction();
-
-                detailFragment = VehicleDetailFragment.newInstance(id, cursor.getString(Columns.NAME.getIndex()));
-
-                transaction.setCustomAnimations(anim.fade_in, anim.fade_out);
-                replaceFragment(detailFragment, R.id.entity_list, "vehicle_detail");
-
-                transaction.addToBackStack(null).commit();
-            }
-            else {
-                detailFragment.loadDetails(id);
-            }
         }
     }
 
@@ -251,9 +230,52 @@ public class VehicleHomeActivity extends BaseFragmentActivity
      * {@inheritDoc}
      */
     @Override
+    public void onEntitySelected(final int position, final long id) {
+        if (!isDualPane()) {
+            final FragmentTransaction transaction = startTransaction();
+
+            detailFragment = VehicleDetailFragment.newInstance(id);//, cursor.getString(Columns.NAME.getIndex()));
+
+            transaction.setCustomAnimations(anim.fade_in, anim.fade_out);
+            replaceFragment(detailFragment, R.id.entity_list, "vehicle_detail");
+
+            transaction.addToBackStack(null).commit();
+        }
+        else {
+            detailFragment.loadDetails(id);
+        }
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public boolean onOptionsItemSelected(final MenuItem item) {
+        if (isDualPane()) {
+            return super.onOptionsItemSelected(item);
+        }
+
+        final int count = getSupportFragmentManager().getBackStackEntryCount();
+        final int id = item.getItemId();
+
+        if (id != android.R.id.home || count == 0) {
+            return super.onOptionsItemSelected(item);
+        }
+
+        getSupportFragmentManager().popBackStack();
+
+        return true;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
     protected void afterViews(final Bundle savedInstanceState) {
         final Bundle bundle = getIntent().getExtras();
         final View view = finder.find(id.entity_details);
+
+        selectItem(NavigationDrawerUtils.VEHICLES, false);
 
         if (TextUtils.isEmpty(savedTitle)) {
             savedTitle = getTitle();
@@ -301,6 +323,21 @@ public class VehicleHomeActivity extends BaseFragmentActivity
      * {@inheritDoc}
      */
     @Override
+    protected List<BaseNavigationListItem> createNavigationItems() {
+        return NavigationDrawerUtils.createItems(this);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    protected int getContentResourceId() {
+        return id.entity_list;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
     protected Integer getLayoutResource() {
         return layout.activity_entity_home;
     }
@@ -317,15 +354,40 @@ public class VehicleHomeActivity extends BaseFragmentActivity
      * {@inheritDoc}
      */
     @Override
-    protected boolean isHomeAsUpEnabled() {
-        return true;
+    protected void onHideOptionsMenuItems(final Menu menu, final boolean isDrawerOpen) {
+        MenuItem item;
+
+        item = menu.findItem(id.menu_vehicle_add);
+        if (item != null) {
+            item.setVisible(!isDrawerOpen);
+        }
+
+        item = menu.findItem(id.menu_vehicle_edit);
+        if (item != null) {
+            item.setVisible(!isDrawerOpen);
+        }
     }
 
     /**
      * {@inheritDoc}
      */
     @Override
-    protected boolean isTitleEnabled() {
-        return true;
+    protected void onNavigationDrawerClosed() {
+        selectItem(NavigationDrawerUtils.VEHICLES, false);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    protected void onNavigationDrawerItemSelected(final int position) {
+        NavigationDrawerUtils.navigate(this, position, NavigationDrawerUtils.VEHICLES);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    protected void onNavigationDrawerOpened() {
     }
 }

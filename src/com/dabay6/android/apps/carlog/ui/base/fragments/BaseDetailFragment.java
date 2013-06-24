@@ -43,8 +43,8 @@ import java.util.Map;
 public abstract class BaseDetailFragment extends BaseListFragment implements LoaderCallbacks<Cursor> {
     protected final static int ENTITY_LOADER_ID = 0x01;
     protected final static String PARAMS_ENTITY_ID = "PARAMS_ENTITY_ID";
-    protected final static String PARAMS_SUB_TITLE = "PARAMS_SUB_TITLE";
-    protected final static String PARAMS_TITLE = "PARAMS_TITLE";
+//    protected final static String PARAMS_SUB_TITLE = "PARAMS_SUB_TITLE";
+//    protected final static String PARAMS_TITLE = "PARAMS_TITLE";
     private final static String KEY_ENTITY_ID = "KEY_ENTITY_ID";
     private final static String TAG = Logger.makeTag(BaseDetailFragment.class);
     protected SimpleTwoLineAdapter adapter;
@@ -59,33 +59,33 @@ public abstract class BaseDetailFragment extends BaseListFragment implements Loa
         return entityId;
     }
 
-    /**
-     *
-     * @return
-     */
-    public String getSubtitle() {
-        final Bundle bundle = getArguments();
+//    /**
+//     *
+//     * @return
+//     */
+//    public String getSubtitle() {
+//        final Bundle bundle = getArguments();
+//
+//        if (bundle != null && bundle.containsKey(PARAMS_SUB_TITLE)) {
+//            return bundle.getString(PARAMS_SUB_TITLE);
+//        }
+//
+//        return null;
+//    }
 
-        if (bundle != null && bundle.containsKey(PARAMS_SUB_TITLE)) {
-            return bundle.getString(PARAMS_SUB_TITLE);
-        }
-
-        return null;
-    }
-
-    /**
-     *
-     * @return
-     */
-    public String getTitle() {
-        final Bundle bundle = getArguments();
-
-        if (bundle != null && bundle.containsKey(PARAMS_TITLE)) {
-            return bundle.getString(PARAMS_TITLE);
-        }
-
-        return null;
-    }
+//    /**
+//     *
+//     * @return
+//     */
+//    public String getTitle() {
+//        final Bundle bundle = getArguments();
+//
+//        if (bundle != null && bundle.containsKey(PARAMS_TITLE)) {
+//            return bundle.getString(PARAMS_TITLE);
+//        }
+//
+//        return null;
+//    }
 
     /**
      *
@@ -153,21 +153,21 @@ public abstract class BaseDetailFragment extends BaseListFragment implements Loa
         }
     }
 
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public void onResume() {
-        final String title = getTitle();
-
-        super.onResume();
-
-        if (!TextUtils.isEmpty(title)) {
-            setTitle(title);
-        }
-
-        setSubtitle(getSubtitle());
-    }
+//    /**
+//     * {@inheritDoc}
+//     */
+//    @Override
+//    public void onResume() {
+//        final String title = getTitle();
+//
+//        super.onResume();
+//
+//        if (!TextUtils.isEmpty(title)) {
+//            setTitle(title);
+//        }
+//
+//        setSubtitle(getSubtitle());
+//    }
 
     /**
      * {@inheritDoc}

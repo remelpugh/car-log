@@ -17,8 +17,11 @@
 
 <resources>
 
+    <style name="utils.Widget.NavigationDrawer">
+    </style>
+
     <style name="ButtonBarStyle"
-           parent="Widget.ButtonBar">
+           parent="utils.Widget.ButtonBar">
         <item name="negativeButtonIcon">@null</item>
         <item name="positiveButtonIcon">@null</item>
         <item name="positiveButtonEnabled">true</item>

@@ -16,50 +16,45 @@
 
 package com.dabay6.android.apps.carlog.ui;
 
+import android.R.anim;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.database.Cursor;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.LoaderManager;
-import android.support.v4.content.CursorLoader;
-import android.support.v4.content.Loader;
-import android.support.v4.widget.CursorAdapter;
-import android.view.ActionMode;
-import com.actionbarsherlock.app.ActionBar;
+import android.support.v4.app.FragmentTransaction;
+import android.view.View;
+import com.actionbarsherlock.view.Menu;
 import com.actionbarsherlock.view.MenuItem;
 import com.dabay6.android.apps.carlog.R;
+import com.dabay6.android.apps.carlog.R.id;
 import com.dabay6.android.apps.carlog.R.menu;
-import com.dabay6.android.apps.carlog.R.string;
-import com.dabay6.android.apps.carlog.adapters.DualLineCursorAdapter;
+import com.dabay6.android.apps.carlog.adapters.FuelHistoryCursorAdapter;
 import com.dabay6.android.apps.carlog.app.InitializationIntentService;
 import com.dabay6.android.apps.carlog.configuration.Intents;
 import com.dabay6.android.apps.carlog.configuration.SharedPreferenceKeys;
-import com.dabay6.android.apps.carlog.configuration.SortOrder;
 import com.dabay6.android.apps.carlog.data.provider.CarLogContract.FuelHistory;
-import com.dabay6.android.apps.carlog.data.provider.CarLogContract.Vehicle;
+import com.dabay6.android.apps.carlog.ui.base.BaseNavigationVehicleSelectorActivity;
 import com.dabay6.android.apps.carlog.ui.base.fragments.BaseDeleteListFragment.OnEntityListListener;
+import com.dabay6.android.apps.carlog.ui.base.fragments.BaseDetailFragment.OnEntityDetailListener;
 import com.dabay6.android.apps.carlog.ui.base.fragments.BaseEditFragment.OnEntityEditListener;
-import com.dabay6.android.apps.carlog.ui.fuel.FuelHistoryEditActivity;
+import com.dabay6.android.apps.carlog.ui.fuel.fragments.FuelHistoryDetailFragment;
+import com.dabay6.android.apps.carlog.ui.fuel.fragments.FuelHistoryEditFragment;
 import com.dabay6.android.apps.carlog.ui.fuel.fragments.FuelHistoryListFragment;
-import com.dabay6.android.apps.carlog.ui.statistics.StatisticsActivity;
-import com.dabay6.android.apps.carlog.ui.vehicle.VehicleHomeActivity;
+import com.dabay6.android.apps.carlog.util.NavigationDrawerUtils;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.utils.android.helper.SharedPreferencesHelper;
 import com.utils.android.logging.Logger;
-import com.utils.android.ui.BaseFragmentListNavigationActivity;
+import com.utils.android.ui.dialogs.DateTimePickerDialogFragment.OnDateTimePickerListener;
 import com.utils.android.ui.dialogs.changelog.OnChangeLogDialogListener;
 import com.utils.android.ui.dialogs.changelog.util.ChangeLogDialogUtils;
-import com.utils.android.ui.fragments.FragmentLifeCycleListener;
-import com.utils.android.util.AndroidUtils;
-import com.utils.android.util.DataUtils;
+import com.utils.android.util.ActionBarUtils;
 import com.utils.android.util.IntentUtils;
-import com.utils.android.util.IntentUtils.ActivityIntentBuilder;
 
 import java.util.List;
+import java.util.Set;
 
 /**
  * HomeActivity
@@ -67,17 +62,14 @@ import java.util.List;
  * @author Remel Pugh
  * @version 1.0
  */
-public class HomeActivity extends BaseFragmentListNavigationActivity implements FragmentLifeCycleListener,
-                                                                                LoaderManager.LoaderCallbacks<Cursor>,
-                                                                                OnChangeLogDialogListener,
-                                                                                OnEntityEditListener,
-                                                                                OnEntityListListener {
+public class HomeActivity extends BaseNavigationVehicleSelectorActivity implements OnChangeLogDialogListener,
+                                                                                   OnDateTimePickerListener,
+                                                                                   OnEntityDetailListener,
+                                                                                   OnEntityEditListener,
+                                                                                   OnEntityListListener {
     private static final int GOOGLE_PLAY_SERVICE_REQUEST = 1;
-    private final static String KEY_ACTION_MODE_STARTED = "KEY_ACTION_MODE_STARTED";
-    private final static String KEY_VEHICLE_ID = "KEY_VEHICLE_ID";
     @SuppressWarnings("unused")
     private final static String TAG = Logger.makeTag(HomeActivity.class);
-    private final static int VEHICLE_LOADER_ID = 0;
     private final BroadcastReceiver initReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(final Context context, final Intent intent) {
@@ -86,20 +78,24 @@ public class HomeActivity extends BaseFragmentListNavigationActivity implements 
             }
         }
     };
-    private DualLineCursorAdapter adapter;
-    private FuelHistoryListFragment fuelHistory;
-    private boolean isActionModeShowing = false;
+    private FuelHistoryDetailFragment detailFragment;
     private boolean isInitialized = false;
-    private Long vehicleId = null;
+    private FuelHistoryListFragment listFragment;
 
     /**
      * {@inheritDoc}
      */
     @Override
-    public void onActionModeStarted(final ActionMode mode) {
-        super.onActionModeStarted(mode);
+    public void onBackStackChanged() {
+        final int count = getSupportFragmentManager().getBackStackEntryCount();
 
-        isActionModeShowing = true;
+        if (count == 0) {
+            ActionBarUtils.configureListNavigation(this);
+
+            return;
+        }
+
+        ActionBarUtils.configureStandardNavigation(this);
     }
 
     /**
@@ -114,9 +110,27 @@ public class HomeActivity extends BaseFragmentListNavigationActivity implements 
      * {@inheritDoc}
      */
     @Override
-    public Loader<Cursor> onCreateLoader(final int i, final Bundle bundle) {
-        return new CursorLoader(getBaseContext(), Vehicle.CONTENT_URI, Vehicle.PROJECTION, null, null,
-                                SortOrder.DEFAULT_VEHICLE_ORDER.toString());
+    public void onDateTimeCancel() {
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void onDateTimeNow(final long milliseconds) {
+        onDateTimeSet(milliseconds);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void onDateTimeSet(final long milliseconds) {
+        final FuelHistoryEditFragment fragment = fragmentFinder.find("fuel_history_edit");
+
+        if (fragment != null) {
+            fragment.setDateTime(milliseconds);
+        }
     }
 
     /**
@@ -124,7 +138,21 @@ public class HomeActivity extends BaseFragmentListNavigationActivity implements 
      */
     @Override
     public void onEntityAdd() {
-        FuelHistoryEditActivity.startActivityForAdd(this, vehicleId);
+        final FuelHistoryEditFragment fragment = FuelHistoryEditFragment.newInstance(getVehicleId());
+
+        if (!isDualPane()) {
+            final FragmentTransaction transaction = startTransaction();
+
+            transaction.setCustomAnimations(anim.fade_in, anim.fade_out);
+
+            replaceFragment(fragment, R.id.entity_list, "fuel_history_edit");
+
+            transaction.addToBackStack(null).commit();
+        }
+        else {
+            fragment.setDualPane(isDualPane());
+            fragment.show(getSupportFragmentManager(), "fuel_history_edit");
+        }
     }
 
     /**
@@ -132,6 +160,16 @@ public class HomeActivity extends BaseFragmentListNavigationActivity implements 
      */
     @Override
     public void onEntityCancel() {
+        if (!isDualPane()) {
+            onBackPressed();
+        }
+        else {
+            final FuelHistoryEditFragment fragment = fragmentFinder.find("fuel_history_edit");
+
+            if (fragment != null) {
+                fragment.dismiss();
+            }
+        }
     }
 
     /**
@@ -140,7 +178,17 @@ public class HomeActivity extends BaseFragmentListNavigationActivity implements 
     @Override
     public void onEntityDelete(final List<Long> ids) {
         if (ids.size() > 0) {
-            fuelHistory.setListShown(false);
+            listFragment.setListShown(false);
+
+            if (detailFragment != null) {
+                final FuelHistoryCursorAdapter adapter = (FuelHistoryCursorAdapter) listFragment.getListAdapter();
+                final Set<Long> selectedItems = adapter.getSelectedItems();
+                final Long entityId = detailFragment.getEntityId();
+
+                if (entityId != null && selectedItems.contains(entityId)) {
+                    detailFragment.loadDetails(null);
+                }
+            }
 
             for (final long id : ids) {
                 final String idValue = Long.toString(id);
@@ -153,7 +201,29 @@ public class HomeActivity extends BaseFragmentListNavigationActivity implements 
                 getContentResolver().delete(FuelHistory.CONTENT_URI, where, selectionArgs);
             }
 
-            fuelHistory.setListShown(true);
+            listFragment.setListShown(true);
+        }
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void onEntityEdit(final Long entityId) {
+        final FuelHistoryEditFragment fragment = FuelHistoryEditFragment.newInstance(getVehicleId(), entityId);
+
+        if (!isDualPane()) {
+            final FragmentTransaction transaction = startTransaction();
+
+            transaction.setCustomAnimations(anim.fade_in, anim.fade_out);
+
+            replaceFragment(fragment, R.id.entity_list, "fuel_history_edit");
+
+            transaction.addToBackStack(null).commit();
+        }
+        else {
+            fragment.setDualPane(isDualPane());
+            fragment.show(getSupportFragmentManager(), "fuel_history_edit");
         }
     }
 
@@ -162,6 +232,18 @@ public class HomeActivity extends BaseFragmentListNavigationActivity implements 
      */
     @Override
     public void onEntitySave() {
+        final FuelHistoryEditFragment fragment = fragmentFinder.find("fuel_history_edit");
+
+        if (!isDualPane()) {
+            onBackPressed();
+        }
+        else {
+            if (fragment != null) {
+                fragment.dismiss();
+
+                detailFragment.refresh();
+            }
+        }
     }
 
     /**
@@ -169,68 +251,24 @@ public class HomeActivity extends BaseFragmentListNavigationActivity implements 
      */
     @Override
     public void onEntitySelected(final int position, final long id) {
-        FuelHistoryEditActivity.startActivityForEdit(this, id, vehicleId);
-    }
+        final FuelHistoryCursorAdapter adapter = (FuelHistoryCursorAdapter) listFragment.getListAdapter();
+        final Cursor cursor = (Cursor) adapter.getItem(position);
 
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public void onFragmentAttached(final Fragment fragment) {
-    }
+        if (cursor != null) {
+            if (!isDualPane()) {
+                final FragmentTransaction transaction = startTransaction();
 
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public void onFragmentViewCreated(final Fragment fragment) {
-        if (!fragment.getTag().equalsIgnoreCase("fuel_history")) {
-            return;
+                detailFragment = FuelHistoryDetailFragment.newInstance(id, adapter.getMilesPerGallon(id));
+
+                transaction.setCustomAnimations(anim.fade_in, anim.fade_out);
+                replaceFragment(detailFragment, R.id.entity_list, "fuel_history_details");
+
+                transaction.addToBackStack(null).commit();
+            }
+            else {
+                detailFragment.loadDetails(id);
+            }
         }
-
-        fuelHistory = (FuelHistoryListFragment) fragment;
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public void onLoadFinished(final Loader<Cursor> cursorLoader, final Cursor cursor) {
-        if (DataUtils.hasData(cursor)) {
-            final ActionBar actionBar = getSupportActionBar();
-
-            actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_LIST);
-            actionBar.setDisplayShowTitleEnabled(false);
-
-            adapter.swapCursor(cursor);
-        }
-        else {
-            final ActivityIntentBuilder builder = new ActivityIntentBuilder(this, VehicleHomeActivity.class);
-
-            builder.get().putExtra(Intents.INTENT_EXTRA_PARENT, getIntent());
-            builder.get().putExtra(VehicleHomeActivity.VEHICLE_EXTRA_NONE, true);
-            builder.start();
-        }
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public void onLoaderReset(final Loader<Cursor> cursorLoader) {
-        adapter.swapCursor(null);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public boolean onNavigationItemSelected(final int itemPosition, final long itemId) {
-        vehicleId = itemId;
-
-        fuelHistory.refresh(vehicleId);
-
-        return true;
     }
 
     /**
@@ -245,14 +283,6 @@ public class HomeActivity extends BaseFragmentListNavigationActivity implements 
                 IntentUtils.createActivityIntent(this, SettingsActivity.class).start();
                 return true;
             }
-            case R.id.menu_statistics_list: {
-                IntentUtils.createActivityIntent(this, StatisticsActivity.class).start();
-                return true;
-            }
-            case R.id.menu_vehicle_list: {
-                IntentUtils.createActivityIntent(this, VehicleHomeActivity.class).start();
-                return true;
-            }
             default: {
                 return super.onOptionsItemSelected(item);
             }
@@ -264,23 +294,41 @@ public class HomeActivity extends BaseFragmentListNavigationActivity implements 
      */
     @Override
     protected void afterViews(final Bundle savedInstanceState) {
+        final View view = finder.find(id.entity_details);
+
+        setDualPane(view != null);
+
+        if (savedInstanceState == null) {
+            final FragmentTransaction transaction = startTransaction();
+
+            listFragment = FuelHistoryListFragment.newInstance();
+
+            addFragment(listFragment, id.entity_list, "fuel_history_list");
+
+            if (isDualPane()) {
+                detailFragment = FuelHistoryDetailFragment.newInstance();
+
+                addFragment(detailFragment, id.entity_details, "fuel_history_details");
+            }
+
+            transaction.commit();
+        }
+        else {
+            listFragment = fragmentFinder.find("fuel_history_list");
+            listFragment.setDualPane(isDualPane());
+
+            if (isDualPane()) {
+                detailFragment = fragmentFinder.find("fuel_history_details");
+                detailFragment.setDualPane(isDualPane());
+            }
+        }
     }
 
     /**
      * {@inheritDoc}
      */
-    @SuppressWarnings("unchecked")
-    @Override
-    protected FuelHistoryListFragment getFragment() {
-        return FuelHistoryListFragment.newInstance(false);
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    protected String getFragmentTag() {
-        return "fuel_history";
+    protected int getContentResourceId() {
+        return id.entity_list;
     }
 
     /**
@@ -288,7 +336,7 @@ public class HomeActivity extends BaseFragmentListNavigationActivity implements 
      */
     @Override
     protected Integer getLayoutResource() {
-        return null;
+        return R.layout.activity_entity_home;
     }
 
     /**
@@ -300,18 +348,10 @@ public class HomeActivity extends BaseFragmentListNavigationActivity implements 
     }
 
     /**
-     * {@inheritDoc}
+     * {inheritDoc}
      */
     @Override
-    protected Integer getNavigationResource() {
-        return null;
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    protected boolean isHomeButtonEnabled() {
+    protected boolean isLoadedOnCreate() {
         return false;
     }
 
@@ -319,30 +359,22 @@ public class HomeActivity extends BaseFragmentListNavigationActivity implements 
      * {@inheritDoc}
      */
     @Override
-    protected boolean isTitleEnabled() {
-        return true;
-    }
+    protected void onHideOptionsMenuItems(final Menu menu, final boolean isDrawerOpen) {
+        MenuItem item;
 
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    protected void onConfigureActionBar() {
-        final ActionBar actionBar = getSupportActionBar();
-        final Context context = actionBar.getThemedContext();
+        item = menu.findItem(id.menu_settings);
+        if (item != null) {
+            item.setVisible(!isDrawerOpen);
+        }
 
-        if (!isActionModeShowing) {
-            if (AndroidUtils.isAtLeastHoneycomb()) {
-                adapter = new DualLineCursorAdapter(context, null, CursorAdapter.FLAG_REGISTER_CONTENT_OBSERVER);
-            }
-            else {
-                adapter = new DualLineCursorAdapter(context, null);
-            }
+        item = menu.findItem(id.menu_fuel_history_add);
+        if (item != null) {
+            item.setVisible(!isDrawerOpen);
+        }
 
-            adapter.setDropDownViewResource(R.layout.sherlock_spinner_dropdown_item);
-            adapter.setTitle(string.fuel_history);
-
-            actionBar.setListNavigationCallbacks(adapter, this);
+        item = menu.findItem(id.menu_fuel_history_edit);
+        if (item != null) {
+            item.setVisible(!isDrawerOpen);
         }
     }
 
@@ -350,18 +382,25 @@ public class HomeActivity extends BaseFragmentListNavigationActivity implements 
      * {@inheritDoc}
      */
     @Override
-    protected void onCreate(final Bundle savedInstanceState) {
-        if (savedInstanceState != null) {
-            if (savedInstanceState.containsKey(KEY_ACTION_MODE_STARTED)) {
-                isActionModeShowing = savedInstanceState.getBoolean(KEY_ACTION_MODE_STARTED);
-            }
-            if (savedInstanceState.containsKey(KEY_VEHICLE_ID)) {
-                vehicleId = savedInstanceState.getLong(KEY_VEHICLE_ID);
-                vehicleId = (vehicleId == -1) ? null : vehicleId;
-            }
-        }
+    protected void onNavigationDrawerClosed() {
+        ActionBarUtils.configureListNavigation(this);
+        selectItem(NavigationDrawerUtils.HOME, false);
+    }
 
-        super.onCreate(savedInstanceState);
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    protected void onNavigationDrawerItemSelected(final int position) {
+        NavigationDrawerUtils.navigate(this, position, NavigationDrawerUtils.HOME);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    protected void onNavigationDrawerOpened() {
+        ActionBarUtils.configureStandardNavigation(this);
     }
 
     /**
@@ -371,7 +410,7 @@ public class HomeActivity extends BaseFragmentListNavigationActivity implements 
     protected void onPause() {
         super.onPause();
 
-        this.unregisterReceiver(this.initReceiver);
+        this.unregisterReceiver(initReceiver);
     }
 
     /**
@@ -414,11 +453,8 @@ public class HomeActivity extends BaseFragmentListNavigationActivity implements 
      * {@inheritDoc}
      */
     @Override
-    protected void onSaveInstanceState(final Bundle outState) {
-        outState.putBoolean(KEY_ACTION_MODE_STARTED, isActionModeShowing);
-        outState.putLong(KEY_VEHICLE_ID, vehicleId == null ? -1 : vehicleId);
-
-        super.onSaveInstanceState(outState);
+    protected void onVehicleSelected(final long vehicleId) {
+        listFragment.refresh(vehicleId);
     }
 
     /**
@@ -428,9 +464,5 @@ public class HomeActivity extends BaseFragmentListNavigationActivity implements 
         final Intent intent = new Intent(this, InitializationIntentService.class);
 
         this.startService(intent);
-    }
-
-    private void startLoader() {
-        getSupportLoaderManager().restartLoader(VEHICLE_LOADER_ID, null, this);
     }
 }

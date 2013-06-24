@@ -20,6 +20,7 @@ import android.content.ContentValues;
 import android.database.Cursor;
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.text.TextUtils;
 import com.dabay6.android.apps.carlog.data.provider.CarLogContract.Model.Columns;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -55,7 +56,6 @@ public class ModelDTO implements Parcelable {
     public void setMakeId(final Long value) {
         makeId = value;
     }
-
     public Long getModelId() {
         return modelId;
     }
@@ -63,7 +63,6 @@ public class ModelDTO implements Parcelable {
     public void setModelId(final Long value) {
         modelId = value;
     }
-
     public String getModelName() {
         return modelName;
     }
@@ -71,7 +70,6 @@ public class ModelDTO implements Parcelable {
     public void setModelName(final String value) {
         modelName = value;
     }
-
     public int describeContents() {
         return 0;
     }

@@ -39,7 +39,7 @@ public class DatabaseHelperExtension extends DatabaseHelper {
     private final Context context;
 
     /**
-     * @param context The {@link Context} used to create the database.
+     * @param context The {@link Context} used to createItems the database.
      * @param name    The name of the database.
      * @param version The current database version.
      */
@@ -119,7 +119,7 @@ public class DatabaseHelperExtension extends DatabaseHelper {
      * @param version The current database version.
      */
     private String getCreateScript(final int version) {
-        final String assetName = "database/%d.create.sql";
+        final String assetName = "database/%d.createItems.sql";
 
         try {
             return AssetUtils.read(context, String.format(assetName, version));

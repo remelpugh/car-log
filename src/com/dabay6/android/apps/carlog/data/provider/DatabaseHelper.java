@@ -38,7 +38,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public DatabaseHelper(final Context context, final String name, final int version) {
         super(context, name, null, version);
     }
-
+    
     /**
      * {@inheritDoc}
      */
@@ -51,7 +51,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         Make.createTable(db);
         Model.createTable(db);
         Vehicle.createTable(db);
-    }
+     }
 
     /**
      * {@inheritDoc}
@@ -59,7 +59,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     @Override
     public void onOpen(final SQLiteDatabase db) {
     }
-
+    
     /**
      * {@inheritDoc}
      */
@@ -72,5 +72,5 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         Make.upgradeTable(db, oldVersion, newVersion);
         Model.upgradeTable(db, oldVersion, newVersion);
         Vehicle.upgradeTable(db, oldVersion, newVersion);
-    }
+     }
 }

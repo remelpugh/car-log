@@ -38,7 +38,7 @@ public class FuelHistoryDTO implements Parcelable {
     };
     private Float costPerUnit;
     private Float fuelAmount;
-    private Integer historyId;
+    private Long historyId;
     private Float latitude;
     private String location;
     private Float longitude;
@@ -55,7 +55,7 @@ public class FuelHistoryDTO implements Parcelable {
     public FuelHistoryDTO(final Parcel in) {
         costPerUnit = in.readFloat();
         fuelAmount = in.readFloat();
-        historyId = in.readInt();
+        historyId = in.readLong();
         latitude = in.readFloat();
         location = in.readString();
         longitude = in.readFloat();
@@ -74,7 +74,6 @@ public class FuelHistoryDTO implements Parcelable {
     public void setCostPerUnit(final Float value) {
         costPerUnit = value;
     }
-
     public Float getFuelAmount() {
         return fuelAmount;
     }
@@ -82,15 +81,13 @@ public class FuelHistoryDTO implements Parcelable {
     public void setFuelAmount(final Float value) {
         fuelAmount = value;
     }
-
-    public Integer getHistoryId() {
+    public Long getHistoryId() {
         return historyId;
     }
 
-    public void setHistoryId(final Integer value) {
+    public void setHistoryId(final Long value) {
         historyId = value;
     }
-
     public Float getLatitude() {
         return latitude;
     }
@@ -98,7 +95,6 @@ public class FuelHistoryDTO implements Parcelable {
     public void setLatitude(final Float value) {
         latitude = value;
     }
-
     public String getLocation() {
         return location;
     }
@@ -106,7 +102,6 @@ public class FuelHistoryDTO implements Parcelable {
     public void setLocation(final String value) {
         location = value;
     }
-
     public Float getLongitude() {
         return longitude;
     }
@@ -114,7 +109,6 @@ public class FuelHistoryDTO implements Parcelable {
     public void setLongitude(final Float value) {
         longitude = value;
     }
-
     public String getName() {
         return name;
     }
@@ -122,7 +116,6 @@ public class FuelHistoryDTO implements Parcelable {
     public void setName(final String value) {
         name = value;
     }
-
     public String getNotes() {
         return notes;
     }
@@ -130,7 +123,6 @@ public class FuelHistoryDTO implements Parcelable {
     public void setNotes(final String value) {
         notes = value;
     }
-
     public Float getOdometerReading() {
         return odometerReading;
     }
@@ -138,7 +130,6 @@ public class FuelHistoryDTO implements Parcelable {
     public void setOdometerReading(final Float value) {
         odometerReading = value;
     }
-
     public Long getPurchaseDate() {
         return purchaseDate;
     }
@@ -146,7 +137,6 @@ public class FuelHistoryDTO implements Parcelable {
     public void setPurchaseDate(final Long value) {
         purchaseDate = value;
     }
-
     public Float getTotalCost() {
         return totalCost;
     }
@@ -154,7 +144,6 @@ public class FuelHistoryDTO implements Parcelable {
     public void setTotalCost(final Float value) {
         totalCost = value;
     }
-
     public Long getVehicleId() {
         return vehicleId;
     }
@@ -162,7 +151,6 @@ public class FuelHistoryDTO implements Parcelable {
     public void setVehicleId(final Long value) {
         vehicleId = value;
     }
-
     public int describeContents() {
         return 0;
     }
@@ -180,7 +168,7 @@ public class FuelHistoryDTO implements Parcelable {
     public void writeToParcel(final Parcel dest, final int flags) {
         dest.writeFloat(costPerUnit);
         dest.writeFloat(fuelAmount);
-        dest.writeInt(historyId);
+        dest.writeLong(historyId);
         dest.writeFloat(latitude);
         dest.writeString(location);
         dest.writeFloat(longitude);
@@ -289,7 +277,7 @@ public class FuelHistoryDTO implements Parcelable {
         }
         index = cursor.getColumnIndex(Columns.HISTORY_ID.getName());
         if (index != -1) {
-            fuelhistory.setHistoryId(cursor.getInt(index));
+            fuelhistory.setHistoryId(cursor.getLong(index));
         }
         index = cursor.getColumnIndex(Columns.LATITUDE.getName());
         if (index != -1) {

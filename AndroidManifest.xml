@@ -38,7 +38,6 @@
     <uses-permission android:name="com.dabay6.android.apps.carlog.permission.MAPS_RECEIVE" />
     <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
 
-    <!--suppress AndroidDomInspection -->
     <uses-feature
             android:glEsVersion="0x00020000"
             android:required="true" />
@@ -61,7 +60,6 @@
 
         <activity
                 android:name=".ui.HomeActivity"
-                android:configChanges="orientation|keyboardHidden"
                 android:label="@string/app_name"
                 android:launchMode="singleTop">
             <intent-filter>
@@ -73,22 +71,6 @@
         <activity
                 android:name=".ui.SettingsActivity"
                 android:label="@string/app_name">
-            <meta-data
-                    android:name="android.support.PARENT_ACTIVITY"
-                    android:value=".ui.HomeActivity" />
-        </activity>
-
-        <activity
-                android:name=".ui.fuel.FuelHistoryListActivity"
-                android:label="@string/fuel_history">
-            <meta-data
-                    android:name="android.support.PARENT_ACTIVITY"
-                    android:value=".ui.HomeActivity" />
-        </activity>
-
-        <activity
-                android:name=".ui.fuel.FuelHistoryEditActivity"
-                android:label="@string/fuel_history_new">
             <meta-data
                     android:name="android.support.PARENT_ACTIVITY"
                     android:value=".ui.HomeActivity" />
@@ -109,18 +91,6 @@
                     android:name="android.support.PARENT_ACTIVITY"
                     android:value=".ui.HomeActivity" />
         </activity>
-
-        <activity
-                android:name=".ui.vehicle.VehicleListActivity"
-                android:label="@string/vehicles">
-            <meta-data
-                    android:name="android.support.PARENT_ACTIVITY"
-                    android:value=".ui.HomeActivity" />
-        </activity>
-
-        <activity
-                android:name=".ui.vehicle.VehicleEditActivity"
-                android:label="@string/vehicle_new" />
 
         <activity android:name="com.dropbox.sync.android.DbxAuthActivity" />
         <activity
@@ -149,5 +119,10 @@
                 android:enabled="true"
                 android:exported="false"
                 android:label="Dropbox Sync" />
+
+        <meta-data
+                android:name="com.crashlytics.ApiKey"
+                android:value="db8ca82d8d29a1790a6aff3c4b26760a3b803eae" />
+
     </application>
 </manifest>

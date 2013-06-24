@@ -20,7 +20,6 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.content.Loader;
-import android.text.TextUtils;
 import com.actionbarsherlock.view.MenuItem;
 import com.dabay6.android.apps.carlog.R;
 import com.dabay6.android.apps.carlog.R.layout;
@@ -57,16 +56,6 @@ public class VehicleDetailFragment extends BaseDetailFragment {
      * @return
      */
     public static VehicleDetailFragment newInstance(final Long id) {
-        return newInstance(id, null);
-    }
-
-    /**
-     *
-     * @param id
-     * @param title
-     * @return
-     */
-    public static VehicleDetailFragment newInstance(final Long id, final String title) {
         final Bundle arguments = new Bundle();
         final VehicleDetailFragment fragment = new VehicleDetailFragment();
 
@@ -74,14 +63,33 @@ public class VehicleDetailFragment extends BaseDetailFragment {
             arguments.putLong(PARAMS_ENTITY_ID, id);
         }
 
-        if (!TextUtils.isEmpty(title)) {
-            arguments.getString(PARAMS_TITLE, title);
-        }
-
         fragment.setArguments(arguments);
 
         return fragment;
     }
+
+    //    /**
+    //     *
+    //     * @param id
+    //     * @param title
+    //     * @return
+    //     */
+    //    public static VehicleDetailFragment newInstance(final Long id, final String title) {
+    //        final Bundle arguments = new Bundle();
+    //        final VehicleDetailFragment fragment = new VehicleDetailFragment();
+    //
+    //        if (id != null) {
+    //            arguments.putLong(PARAMS_ENTITY_ID, id);
+    //        }
+    //
+    //        if (!TextUtils.isEmpty(title)) {
+    //            arguments.putString(PARAMS_TITLE, title);
+    //        }
+    //
+    //        fragment.setArguments(arguments);
+    //
+    //        return fragment;
+    //    }
 
     /**
      * {@inheritDoc}

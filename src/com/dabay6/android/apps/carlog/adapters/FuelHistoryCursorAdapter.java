@@ -21,10 +21,13 @@ import android.content.Context;
 import android.database.Cursor;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Pair;
 import android.view.View;
 import android.widget.TextView;
+import com.actionbarsherlock.app.SherlockFragmentActivity;
 import com.actionbarsherlock.view.ActionMode;
 import com.actionbarsherlock.view.Menu;
+import com.actionbarsherlock.view.MenuInflater;
 import com.actionbarsherlock.view.MenuItem;
 import com.dabay6.android.apps.carlog.R;
 import com.dabay6.android.apps.carlog.data.DTO.FuelHistoryDTO;
@@ -32,9 +35,11 @@ import com.utils.android.adapters.BaseCheckableCursorAdapter;
 import com.utils.android.logging.Logger;
 import com.utils.android.util.DateUtils;
 import com.utils.android.util.DateUtils.DateFormats;
+import com.utils.android.util.HashMapUtils;
 import com.utils.android.view.ViewsFinder;
 
 import java.text.NumberFormat;
+import java.util.HashMap;
 
 /**
  * VehicleCursorAdapter
@@ -44,13 +49,12 @@ import java.text.NumberFormat;
  */
 @SuppressWarnings("unused")
 public class FuelHistoryCursorAdapter extends BaseCheckableCursorAdapter {
-    @SuppressWarnings("unused")
     private final static String TAG = Logger.makeTag(FuelHistoryCursorAdapter.class);
+    private HashMap<Long, Float> milesPerGallon = HashMapUtils.newHashMap();
 
     /**
      * {@inheritDoc}
      */
-    @SuppressWarnings("deprecation")
     public FuelHistoryCursorAdapter(final Context context, final Bundle savedInstanceState, final Cursor c) {
         super(context, savedInstanceState, R.layout.list_item_fuel_history, c);
     }
@@ -64,19 +68,59 @@ public class FuelHistoryCursorAdapter extends BaseCheckableCursorAdapter {
         super(context, savedInstanceState, R.layout.list_item_fuel_history, c, flags);
     }
 
-    @Override
-    public boolean onActionItemClicked(ActionMode mode, MenuItem item) {
-        return false;  //To change body of implemented methods use File | Settings | File Templates.
+    /**
+     *
+     * @param id
+     * @return
+     */
+    public Float getMilesPerGallon(final Long id) {
+        if (milesPerGallon.containsKey(id)) {
+            return milesPerGallon.get(id);
+        }
+
+        return null;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public boolean onCreateActionMode(ActionMode mode, Menu menu) {
-        return false;  //To change body of implemented methods use File | Settings | File Templates.
+    public boolean onActionItemClicked(final ActionMode mode, final MenuItem item) {
+        final int id = item.getItemId();
+
+        if (id == R.id.action_delete) {
+            if (getOnActionModeCallbackListener() != null) {
+                getOnActionModeCallbackListener().onActionDelete(mode);
+            }
+
+            return true;
+        }
+
+        return false;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public boolean onPrepareActionMode(ActionMode mode, Menu menu) {
-        return false;  //To change body of implemented methods use File | Settings | File Templates.
+    public boolean onCreateActionMode(final ActionMode mode, final Menu menu) {
+        final MenuInflater inflater = ((SherlockFragmentActivity) helper.getContext()).getSupportMenuInflater();
+
+        if (getOnActionModeCallbackListener() != null) {
+            getOnActionModeCallbackListener().onActionModeCreated(mode);
+        }
+
+        inflater.inflate(R.menu.menu_delete_contextual, menu);
+
+        return true;
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public boolean onPrepareActionMode(final ActionMode mode, final Menu menu) {
+        return false;
     }
 
     /**
@@ -95,9 +139,12 @@ public class FuelHistoryCursorAdapter extends BaseCheckableCursorAdapter {
         final TextView total = finder.find(R.id.total);
         final TextView volume = finder.find(R.id.volume);
         final FuelHistoryDTO history = FuelHistoryDTO.newInstance(cursor);
+        final Pair<Float, String> calculated = calculateMilesPerGallon(context, history, cursor);
+
+        milesPerGallon.put(history.getHistoryId(), calculated.first);
 
         dateTime.setText(DateUtils.getUserLocaleFormattedDate(context, history.getPurchaseDate(), DateFormats.Medium));
-        mpg.setText(calculateMilesPerGallon(context, history, cursor));
+        mpg.setText(calculated.second);
         odometer.setText(context.getString(R.string.fuel_history_miles, history.getOdometerReading()));
         volume.setText(context.getString(R.string.gallons, history.getFuelAmount()));
 
@@ -114,7 +161,9 @@ public class FuelHistoryCursorAdapter extends BaseCheckableCursorAdapter {
      * @param history The current {@link FuelHistoryDTO} record.
      * @param cursor  All history records.
      */
-    private String calculateMilesPerGallon(final Context context, final FuelHistoryDTO history, final Cursor cursor) {
+    private Pair<Float, String> calculateMilesPerGallon(final Context context, final FuelHistoryDTO history,
+                                                        final Cursor cursor) {
+        final Pair<Long, String> returnValue;
         final int count = cursor.getCount() - 1;
         final int currentPosition = cursor.getPosition();
         final int next = cursor.getPosition() + 1;
@@ -137,6 +186,6 @@ public class FuelHistoryCursorAdapter extends BaseCheckableCursorAdapter {
             mpg = history.getOdometerReading() / history.getFuelAmount();
         }
 
-        return String.format(context.getString(R.string.miles_per_gallon), mpg);
+        return new Pair<Float, String>(mpg, String.format(context.getString(R.string.miles_per_gallon), mpg));
     }
 }

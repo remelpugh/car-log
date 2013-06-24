@@ -31,8 +31,8 @@ import com.utils.android.ui.fragments.BaseListFragment;
 import com.utils.android.util.DataUtils;
 import com.utils.android.util.ListUtils;
 import com.utils.android.util.StringUtils;
-import com.utils.android.widget.DetailsAdapter;
-import com.utils.android.widget.DetailsItem;
+import com.utils.android.adapters.DetailsAdapter;
+import com.utils.android.adapters.DetailsItem;
 
 import java.text.NumberFormat;
 import java.util.List;
