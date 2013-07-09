@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+  ~ Copyright (c) 2013 Remel Pugh
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~ 	http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+    <include layout="@layout/button_bar" />
+
+    <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/buttonBar"
+            android:layout_alignParentTop="true">
+
+        <LinearLayout
+                style="@style/Form"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+            <TextView
+                    style="@style/FormFieldLabel"
+                    android:text="@string/vehicle_name" />
+
+            <EditText
+                    style="@style/FormField"
+                    android:id="@+id/name"
+                    android:hint="@string/vehicle_name"
+                    android:inputType="text"
+                    android:imeOptions="actionNext"
+                    android:nextFocusDown="@+id/make">
+
+                <requestFocus />
+            </EditText>
+
+            <TextView
+                    style="@style/FormFieldLabel"
+                    android:text="@string/vehicle_make" />
+
+            <AutoCompleteTextView
+                    style="@style/FormField"
+                    android:id="@+id/make"
+                    android:completionThreshold="1"
+                    android:hint="@string/vehicle_make"
+                    android:imeOptions="actionNext"
+                    android:nextFocusDown="@+id/model"
+                    android:singleLine="true" />
+
+            <TextView
+                    style="@style/FormFieldLabel"
+                    android:text="@string/vehicle_model" />
+
+            <AutoCompleteTextView
+                    style="@style/FormField"
+                    android:id="@+id/model"
+                    android:completionThreshold="1"
+                    android:enabled="false"
+                    android:hint="@string/vehicle_model"
+                    android:imeOptions="actionNext"
+                    android:nextFocusDown="@+id/year"
+                    android:singleLine="true" />
+
+            <TextView
+                    style="@style/FormFieldLabel"
+                    android:text="@string/vehicle_year" />
+
+            <EditText
+                    style="@style/FormField"
+                    android:id="@+id/year"
+                    android:hint="@string/vehicle_year"
+                    android:inputType="number"
+                    android:imeOptions="actionNext"
+                    android:nextFocusDown="@+id/license_plate" />
+
+            <TextView
+                    style="@style/FormFieldLabel"
+                    android:text="@string/vehicle_license_plate" />
+
+            <EditText
+                    style="@style/FormField"
+                    android:id="@+id/license_plate"
+                    android:hint="@string/vehicle_license_plate"
+                    android:inputType="text"
+                    android:imeOptions="actionNext"
+                    android:nextFocusDown="@+id/vin" />
+
+            <TextView
+                    style="@style/FormFieldLabel"
+                    android:text="@string/vehicle_vin" />
+
+            <EditText
+                    style="@style/FormField"
+                    android:id="@+id/vin"
+                    android:hint="@string/vehicle_vin"
+                    android:inputType="text"
+                    android:imeOptions="actionDone"
+                    android:imeActionLabel="@string/save" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</RelativeLayout>

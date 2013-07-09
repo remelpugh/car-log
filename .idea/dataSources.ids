@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?><component name="dataSourceStorage">
+  <data-source source="LOCAL" name="Data Source" product="SQLite" version="3.7.6.3" jdbc-version="2.1" driver-name="SQLiteJDBC" driver-version="native" uuid="c6c29671-5b19-4b0e-85b9-e1f911434e8f">
+    <synchronize>true</synchronize>
+    <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
+    <jdbc-url>jdbc:sqlite:E:\IdeaProjects\CarLog\db\carlog.db</jdbc-url>
+    <schema-pattern>*</schema-pattern>
+    <default-dialect>SQLite</default-dialect>
+    <libraries>
+      <library>
+        <url>jar://$PROJECT_DIR$/../drivers/sqlite-jdbc-3.7.6.3-20110609.081603-3.jar!/</url>
+      </library>
+      <library>
+        <url>file://$PROJECT_DIR$/../drivers/xerial-sqlite-license.txt</url>
+      </library>
+    </libraries>
+    <schema name="" catalog="" />
+    <table name="FuelHistory" schema="" catalog="" type="TABLE">
+      <column name="_id" sqlType="INTEGER" length="2000000000" precision="10" nullable="true" jdbcType="4" />
+      <column name="VehicleId" sqlType="INTEGER" length="2000000000" precision="10" nullable="true" jdbcType="4" />
+      <column name="OdometerReading" sqlType="REAL" length="2000000000" precision="10" nullable="true" jdbcType="6" />
+      <column name="FuelAmount" sqlType="REAL" length="2000000000" precision="10" nullable="true" jdbcType="6" />
+      <column name="CostPerUnit" sqlType="REAL" length="2000000000" precision="10" nullable="true" jdbcType="6" />
+      <column name="TotalCost" sqlType="REAL" length="2000000000" precision="10" nullable="true" jdbcType="6" />
+      <column name="PurchaseDate" sqlType="INTEGER" length="2000000000" precision="10" nullable="true" jdbcType="4" />
+      <column name="MilesPerGallon" sqlType="REAL" length="2000000000" precision="10" nullable="true" jdbcType="6" />
+      <column name="Notes" sqlType="TEXT" length="2000000000" precision="10" nullable="true" jdbcType="12" />
+      <column name="latitude" sqlType="REAL" length="2000000000" precision="10" nullable="true" jdbcType="6" />
+      <column name="longitude" sqlType="REAL" length="2000000000" precision="10" nullable="true" jdbcType="6" />
+      <column name="Location" sqlType="TEXT" length="2000000000" precision="10" nullable="true" jdbcType="12" />
+      <primary-key columns="_id" />
+    </table>
+    <table name="Make" schema="" catalog="" type="TABLE">
+      <column name="_id" sqlType="INTEGER" length="2000000000" precision="10" nullable="true" jdbcType="4" />
+      <column name="MakeName" sqlType="TEXT" length="2000000000" precision="10" nullable="false" jdbcType="12" />
+      <primary-key columns="_id" />
+      <index name="Make_MakeName" unique="true" columns="MakeName" />
+    </table>
+    <table name="Model" schema="" catalog="" type="TABLE">
+      <column name="_id" sqlType="INTEGER" length="2000000000" precision="10" nullable="true" jdbcType="4" />
+      <column name="ModelName" sqlType="TEXT" length="2000000000" precision="10" nullable="false" jdbcType="12" />
+      <column name="MakeId" sqlType="INTEGER" length="2000000000" precision="10" nullable="false" jdbcType="4" />
+      <primary-key columns="_id" />
+      <index name="Model_ModelName" unique="true" columns="ModelName" />
+    </table>
+    <table name="Vehicle" schema="" catalog="" type="TABLE">
+      <column name="_id" sqlType="INTEGER" length="2000000000" precision="10" nullable="true" jdbcType="4" />
+      <column name="Name" sqlType="TEXT" length="2000000000" precision="10" nullable="true" jdbcType="12" />
+      <column name="Year" sqlType="INTEGER" length="2000000000" precision="10" nullable="true" jdbcType="4" />
+      <column name="MakeId" sqlType="INTEGER" length="2000000000" precision="10" nullable="false" jdbcType="4" />
+      <column name="ModelId" sqlType="INTEGER" length="2000000000" precision="10" nullable="false" jdbcType="4" />
+      <column name="LicensePlate" sqlType="TEXT" length="2000000000" precision="10" nullable="true" jdbcType="12" />
+      <column name="Vin" sqlType="TEXT" length="2000000000" precision="10" nullable="true" jdbcType="12" />
+      <column name="Notes" sqlType="TEXT" length="2000000000" precision="10" nullable="true" jdbcType="12" />
+      <column name="Active" sqlType="INTEGER" length="2000000000" precision="10" nullable="true" jdbcType="4" />
+      <primary-key columns="_id" />
+    </table>
+    <table name="android_metadata" schema="" catalog="" type="TABLE">
+      <column name="locale" sqlType="TEXT" length="2000000000" precision="10" nullable="true" jdbcType="12" />
+    </table>
+    <table name="vw_StatisticsTotals" schema="" catalog="" type="VIEW">
+      <column name="VehicleId" sqlType="INTEGER" length="2000000000" precision="10" nullable="true" jdbcType="4" />
+      <column name="TotalDistance" sqlType="" length="2000000000" precision="10" nullable="true" jdbcType="12" />
+      <column name="TotalFuel" sqlType="" length="2000000000" precision="10" nullable="true" jdbcType="12" />
+      <column name="TotalFuelCost" sqlType="" length="2000000000" precision="10" nullable="true" jdbcType="12" />
+      <column name="TotalCurrentMonth" sqlType="" length="2000000000" precision="10" nullable="true" jdbcType="12" />
+      <column name="TotalPreviousMonth" sqlType="" length="2000000000" precision="10" nullable="true" jdbcType="12" />
+      <column name="TotalCurrentYear" sqlType="" length="2000000000" precision="10" nullable="true" jdbcType="12" />
+      <column name="TotalPreviousYear" sqlType="" length="2000000000" precision="10" nullable="true" jdbcType="12" />
+    </table>
+  </data-source>
+</component>

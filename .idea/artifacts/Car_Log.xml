@@ -1,0 +1,16 @@
+<component name="ArtifactManager">
+  <artifact type="apk" build-on-make="true" name="Car Log">
+    <output-path>$PROJECT_DIR$/out/artifacts/</output-path>
+    <properties id="android-properties">
+      <options>
+        <option name="includeSystemProGuardCfgFile" value="true" />
+        <option name="keyStoreUrl" value="file://" />
+        <option name="proGuardCfgFileUrl" value="file://$PROJECT_DIR$/Car Log/proguard-project.txt" />
+        <option name="signingMode" value="DEBUG" />
+      </options>
+    </properties>
+    <root id="archive" name="Car Log.apk">
+      <element id="android-final-package" facet="Car Log/android/Android" />
+    </root>
+  </artifact>
+</component>
