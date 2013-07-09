@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="fuel_history">Fuel History</string>
+    <string name="fuel_history_3_decimal">0.000</string>
+    <string name="fuel_history_add">Add Fuel history entry</string>
+    <string name="fuel_history_cost_per_unit">%s/gal</string>
+    <string name="fuel_history_date">Date/Time</string>
+    <string name="fuel_history_detail_empty">Select history to display the details</string>
+    <string name="fuel_history_details">Fuel History Details</string>
+    <string name="fuel_history_edit">Edit Fuel History</string>
+    <string name="fuel_history_empty">No fuel history records found</string>
+    <string name="fuel_history_odom">Odometer Reading</string>
+    <string name="fuel_history_miles">%.0f miles</string>
+    <string name="fuel_history_mpg">Miles per gallon</string>
+    <string name="fuel_history_new">New Fuel History Record</string>
+    <string name="fuel_history_notes">Notes</string>
+    <string name="fuel_history_money">0.00</string>
+    <string name="fuel_history_price">Price/Gallon</string>
+    <string name="fuel_history_select">Select history to delete</string>
+    <string name="fuel_history_total">Total Cost</string>
+    <string name="fuel_history_volume">Number Gallons</string>
+</resources>

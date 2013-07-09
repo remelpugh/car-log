@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="preferences_category_about_summary">Information about this application</string>
+    <string name="preferences_category_about_title">About</string>
+    <string name="preferences_category_maintenance_summary">Perform an application maintenance.</string>
+    <string name="preferences_category_maintenance_title">Application Maintenance</string>
+    <string name="preferences_maintenance_backup_summary">Backup the applications preferences and database.</string>
+    <string name="preferences_maintenance_backup_title">Backup</string>
+    <string name="preferences_maintenance_drive_summary">Backup application data to your Google Drive account.</string>
+    <string name="preferences_maintenance_drive_title">Google Drive</string>
+    <string name="preferences_maintenance_dropbox_summary">Backup application data to your Dropbox account.</string>
+    <string name="preferences_maintenance_dropbox_title">Dropbox</string>
+    <string name="preferences_about_change_log_summary">Display application change log.</string>
+    <string name="preferences_about_change_log_title">Change log</string>
+    <string name="preferences_about_open_source_summary">Display open source licenses used by this application.</string>
+    <string name="preferences_about_open_source_title">Open source licenses</string>
+</resources>
