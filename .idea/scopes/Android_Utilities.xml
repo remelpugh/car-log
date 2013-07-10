@@ -1,3 +1,3 @@
 <component name="DependencyValidationManager">
-  <scope name="Android Utilities" pattern="file[android utilities]:*/" />
+  <scope name="Android Utilities" pattern="file[android-utilities]:*/" />
 </component>

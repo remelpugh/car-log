@@ -87,10 +87,13 @@
     </treeState>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e2488f8c-68e6-486c-a83c-db2af9fcf7d4" name="Default" comment="- updated based on refactoring in the android utilities library" />
+    <list default="true" id="e2488f8c-68e6-486c-a83c-db2af9fcf7d4" name="Default" comment="- updated based on refactoring in the android utilities library">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/android-utilities/libraries/ActionBarSherlock" afterPath="$PROJECT_DIR$/modules/android-utilities/libraries/ActionBarSherlock" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/modules/android-utilities/android-utilities.iml" afterPath="$PROJECT_DIR$/modules/android-utilities/android-utilities.iml" />
+    </list>
     <ignored path="Car Log.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="e2488f8c-68e6-486c-a83c-db2af9fcf7d4" time="1373390581659" ignored="false" />
+    <file path="/Dummy.txt" changelist="e2488f8c-68e6-486c-a83c-db2af9fcf7d4" time="1373482526566" ignored="false" />
     <file path="D:/SDK/android/platforms/android-16/data/res/values-in/strings.xml" changelist="e2488f8c-68e6-486c-a83c-db2af9fcf7d4" time="1357393159669" ignored="false" />
     <file path="D:/SDK/android/platforms/android-16/data/res/values-nl/strings.xml" changelist="e2488f8c-68e6-486c-a83c-db2af9fcf7d4" time="1357393159669" ignored="false" />
     <file path="D:/SDK/android/platforms/android-16/data/res/values-th/strings.xml" changelist="e2488f8c-68e6-486c-a83c-db2af9fcf7d4" time="1357393159669" ignored="false" />
@@ -1628,68 +1631,7 @@
     <sortChildren value="false" />
   </component>
   <component name="DebuggerManager">
-    <line_breakpoints default_suspend_policy="SuspendAll" default_condition_enabled="true">
-      <breakpoint url="file://$PROJECT_DIR$/Car Log/src/com/dabay6/android/apps/carlog/ui/base/fragments/BaseEditFragment.java" line="125" class="com.dabay6.android.apps.carlog.ui.base.fragments.BaseEditFragment" package="com.dabay6.android.apps.carlog.ui.base.fragments">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="REMOVE_AFTER_HIT" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="true" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/Car Log/src/com/dabay6/android/apps/carlog/ui/base/fragments/BaseEditFragment.java" line="59" class="com.dabay6.android.apps.carlog.ui.base.fragments.BaseEditFragment" package="com.dabay6.android.apps.carlog.ui.base.fragments">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="REMOVE_AFTER_HIT" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="true" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/Car Log/src/com/dabay6/android/apps/carlog/ui/base/fragments/BaseDetailFragment.java" line="160" class="com.dabay6.android.apps.carlog.ui.base.fragments.BaseDetailFragment" package="com.dabay6.android.apps.carlog.ui.base.fragments">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="REMOVE_AFTER_HIT" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="true" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/Car Log/src/com/dabay6/android/apps/carlog/ui/vehicle/VehicleHomeActivity.java" line="383" class="com.dabay6.android.apps.carlog.ui.vehicle.VehicleHomeActivity" package="com.dabay6.android.apps.carlog.ui.vehicle">
-        <option name="ENABLED" value="true" />
-        <option name="LOG_ENABLED" value="false" />
-        <option name="LOG_EXPRESSION_ENABLED" value="false" />
-        <option name="REMOVE_AFTER_HIT" value="false" />
-        <option name="SUSPEND_POLICY" value="SuspendAll" />
-        <option name="SUSPEND" value="true" />
-        <option name="COUNT_FILTER_ENABLED" value="false" />
-        <option name="COUNT_FILTER" value="0" />
-        <option name="CONDITION_ENABLED" value="true" />
-        <option name="CLASS_FILTERS_ENABLED" value="false" />
-        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="" />
-        <option name="LOG_MESSAGE" value="" />
-      </breakpoint>
-    </line_breakpoints>
+    <line_breakpoints default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <breakpoint_any default_suspend_policy="SuspendAll" default_condition_enabled="true">
       <breakpoint>
@@ -1706,8 +1648,8 @@
         <option name="CONDITION_ENABLED" value="true" />
         <option name="CLASS_FILTERS_ENABLED" value="false" />
         <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="&#13;&#13;JAVA" />
-        <option name="LOG_MESSAGE" value="&#13;&#13;JAVA" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
       </breakpoint>
       <breakpoint>
         <option name="NOTIFY_CAUGHT" value="true" />
@@ -1723,8 +1665,8 @@
         <option name="CONDITION_ENABLED" value="true" />
         <option name="CLASS_FILTERS_ENABLED" value="false" />
         <option name="INSTANCE_FILTERS_ENABLED" value="false" />
-        <option name="CONDITION" value="&#13;&#13;JAVA" />
-        <option name="LOG_MESSAGE" value="&#13;&#13;JAVA" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
       </breakpoint>
     </breakpoint_any>
     <breakpoint_rules />
@@ -1736,65 +1678,13 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="HomeActivity.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Car Log/src/com/dabay6/android/apps/carlog/ui/HomeActivity.java">
+      <file leaf-file-name="VehicleEditFragment.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/CarLog/src/com/dabay6/android/apps/carlog/ui/vehicle/fragments/VehicleEditFragment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="467" column="1" selection-start="14013" selection-end="14013" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="InitializationIntentService.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Car Log/src/com/dabay6/android/apps/carlog/app/InitializationIntentService.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="101" column="35" selection-start="3293" selection-end="3293" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="NetworkUtils.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../libraries/android-utilities/src/com/utils/android/util/NetworkUtils.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="33" column="23" selection-start="953" selection-end="953" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="NetworkTypes.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../libraries/android-utilities/src/com/utils/android/enums/NetworkTypes.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="34" column="0" selection-start="974" selection-end="974" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Intents.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Car Log/src/com/dabay6/android/apps/carlog/configuration/Intents.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="32" column="86" selection-start="855" selection-end="1008" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="themes.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Car Log/res/values/themes.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="8" column="15" selection-start="279" selection-end="279" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CarLogApplication.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Car Log/src/com/dabay6/android/apps/carlog/app/CarLogApplication.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="102" column="48" selection-start="2636" selection-end="2636" vertical-scroll-proportion="0.6069364">
-              <folding />
+            <state line="142" column="6" selection-start="4884" selection-end="4884" vertical-scroll-proportion="0.4409222">
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -1812,7 +1702,7 @@
     <option name="REMEMBER_PASSWORDS" value="true" />
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/Car Log" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/modules/android-utilities" />
   </component>
   <component name="GitLogSettings">
     <option name="myDateState">
@@ -2201,30 +2091,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="ProjectPane">
-        <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Car Log" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Car Log" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="App" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleGroupNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Car Log" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
       <pane id="PackagesPane">
         <subPane>
           <PATH>
@@ -2281,19 +2147,229 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Car Log" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Car Log" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Modules" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleGroupNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Car Log" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="App" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleGroupNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CarLog" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Car Log" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="App" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleGroupNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CarLog" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="com" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dabay6" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="android" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="apps" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="carlog" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Car Log" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="App" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleGroupNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CarLog" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="com" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dabay6" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="android" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="apps" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="carlog" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ui" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Car Log" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="App" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleGroupNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CarLog" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="com" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dabay6" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="android" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="apps" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="carlog" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ui" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="vehicle" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Car Log" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="App" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleGroupNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CarLog" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="com" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dabay6" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="android" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="apps" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="carlog" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ui" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="vehicle" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="fragments" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="project.structure.last.edited" value="Libraries" />
-    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.last.edited" value="Modules" />
     <property name="OverrideImplement.combined" value="false" />
+    <property name="project.structure.proportion" value="0.13964844" />
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="Repository.Attach.JavaDocs" value="false" />
-    <property name="MemberChooser.sorted" value="false" />
-    <property name="recentsLimit" value="5" />
     <property name="ExportedApkPath" value="E:\IdeaProjects\CarLog\apks\release\Car Log.apk" />
+    <property name="recentsLimit" value="5" />
+    <property name="MemberChooser.sorted" value="false" />
     <property name="ExportedModule" value="Car Log" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../android-utilities" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/modules/android-utilities/libs/android-support-v4.jar!/" />
     <property name="GoToClass.includeJavaFiles" value="true" />
     <property name="Database.TableEditor.Splitter" value="0.90000004" />
     <property name="GoToClass.toSaveIncludeLibraries" value="false" />
@@ -2305,16 +2381,16 @@
     <property name="options.splitter.details.proportions" value="0.2" />
     <property name="GoToFile.includeJavaFiles" value="false" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/Car Log/src/com/android/dabay6/carlog/ui/vehicle/fragments" />
-    <property name="options.lastSelected" value="reference.settings.ide.settings.spelling" />
+    <property name="options.lastSelected" value="fileColors" />
     <property name="AndroidLayoutSelectedEditor" value="text-editor" />
-    <property name="project.structure.side.proportion" value="0.2713068" />
     <property name="DefaultHtmlFileTemplate" value="Html5" />
+    <property name="project.structure.side.proportion" value="0.2713068" />
     <property name="ANDROID_EXTENDED_DEVICE_CHOOSER_SERIALS" value="464119660d209a8e 38324D8CD19C00EC" />
     <property name="MemberChooser.copyJavadoc" value="false" />
     <property name="AndroidRunProguardForReleaseBuild" value="false" />
     <property name="restartRequiresConfirmation" value="true" />
-    <property name="options.searchVisible" value="true" />
     <property name="dynamic.classpath" value="false" />
+    <property name="options.searchVisible" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
@@ -2347,24 +2423,6 @@
     </key>
   </component>
   <component name="RunManager" selected="Android Application.CarLog">
-    <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Tests">
-      <module name="" />
-      <option name="TESTING_TYPE" value="0" />
-      <option name="INSTRUMENTATION_RUNNER_CLASS" value="" />
-      <option name="METHOD_NAME" value="" />
-      <option name="CLASS_NAME" value="" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="TARGET_SELECTION_MODE" value="EMULATOR" />
-      <option name="PREFERRED_AVD" value="" />
-      <option name="USE_COMMAND_LINE" value="true" />
-      <option name="COMMAND_LINE" value="" />
-      <option name="WIPE_USER_DATA" value="false" />
-      <option name="DISABLE_BOOT_ANIMATION" value="false" />
-      <option name="NETWORK_SPEED" value="full" />
-      <option name="NETWORK_LATENCY" value="none" />
-      <option name="CLEAR_LOGCAT" value="false" />
-      <method />
-    </configuration>
     <configuration default="true" type="MavenRunConfiguration" factoryName="Maven">
       <MavenSettings>
         <option name="myGeneralSettings" />
@@ -2385,6 +2443,24 @@
           </MavenRunnerParameters>
         </option>
       </MavenSettings>
+      <method />
+    </configuration>
+    <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Tests">
+      <module name="" />
+      <option name="TESTING_TYPE" value="0" />
+      <option name="INSTRUMENTATION_RUNNER_CLASS" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="CLASS_NAME" value="" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TARGET_SELECTION_MODE" value="EMULATOR" />
+      <option name="PREFERRED_AVD" value="" />
+      <option name="USE_COMMAND_LINE" value="true" />
+      <option name="COMMAND_LINE" value="" />
+      <option name="WIPE_USER_DATA" value="false" />
+      <option name="DISABLE_BOOT_ANIMATION" value="false" />
+      <option name="NETWORK_SPEED" value="full" />
+      <option name="NETWORK_LATENCY" value="none" />
+      <option name="CLEAR_LOGCAT" value="false" />
       <method />
     </configuration>
     <configuration default="true" type="Remote" factoryName="Remote">
@@ -2559,7 +2635,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32729805" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32954547" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
@@ -2576,7 +2652,7 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2969697" sideWeight="0.4880546" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3287879" sideWeight="0.5802048" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24903475" sideWeight="0.5853242" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24903475" sideWeight="0.586351" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.66211605" sideWeight="0.4909091" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32818532" sideWeight="0.21169916" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Problems" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
@@ -2587,7 +2663,7 @@
       <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25225225" sideWeight="0.4215017" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3088737" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.41467577" sideWeight="0.4909091" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.41364902" sideWeight="0.4909091" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -2674,86 +2750,31 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Car Log/res/values/strings_preferences.xml">
+    <entry file="file://$PROJECT_DIR$/CarLog/src/com/dabay6/android/apps/carlog/ui/vehicle/fragments/VehicleEditFragment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="84" selection-start="1365" selection-end="1365" vertical-scroll-proportion="-9.807693" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Car Log/res/values/strings_fuel_history.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="62" selection-start="1261" selection-end="1261" vertical-scroll-proportion="0.63670415" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Car Log/res/values/strings_vehicles.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="45" selection-start="876" selection-end="876" vertical-scroll-proportion="0.4775281" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Car Log/res/values/strings_dropbox.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="13" selection-start="976" selection-end="976" vertical-scroll-proportion="-14.384615" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Car Log/res/values/strings_reminders.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="54" selection-start="273" selection-end="273" vertical-scroll-proportion="0.15917604" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Car Log/res/values/strings_statistics.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="87" selection-start="138" selection-end="138" vertical-scroll-proportion="-1.3076923" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Car Log/res/values/strings.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="44" selection-start="1043" selection-end="1043" vertical-scroll-proportion="0.60299623" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Car Log/src/com/dabay6/android/apps/carlog/ui/HomeActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="467" column="1" selection-start="14013" selection-end="14013" vertical-scroll-proportion="0.0">
-          <folding />
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Car Log/AndroidManifest.xml">
+    <entry file="file://$PROJECT_DIR$/../libraries/android-utilities/src/com/utils/android/enums/NetworkTypes.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="114" column="97" selection-start="4754" selection-end="4852" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="44" column="5" selection-start="1234" selection-end="1234" vertical-scroll-proportion="0.4913295" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Car Log/libraries/android-utilities/src/com/utils/android/ui/BaseNavigationDrawerActivity.java">
+    <entry file="file://$PROJECT_DIR$/../libraries/android-utilities/src/com/utils/android/util/NetworkUtils.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="25" selection-start="897" selection-end="897" vertical-scroll-proportion="0.5362776" />
+        <state line="33" column="23" selection-start="953" selection-end="953" vertical-scroll-proportion="0.024566473" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Car Log/libraries/android-utilities/res/drawable/util__list_selector_holo_dark.xml">
+    <entry file="file://$PROJECT_DIR$/CarLog/src/com/dabay6/android/apps/carlog/ui/vehicle/fragments/VehicleEditFragment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="23" column="0" selection-start="971" selection-end="971" vertical-scroll-proportion="0.47792706" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Car Log/libraries/android-utilities/res/drawable/util__list_selector_background_transition_holo_light.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="13" selection-start="879" selection-end="879" vertical-scroll-proportion="0.63670415" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Car Log/libraries/android-utilities/res/drawable/util__list_selector_background_transition_holo_dark.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="13" selection-start="878" selection-end="878" vertical-scroll-proportion="0.63670415" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Car Log/res/values/themes.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="15" selection-start="279" selection-end="279" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Car Log/src/com/dabay6/android/apps/carlog/app/CarLogApplication.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="102" column="48" selection-start="2636" selection-end="2636" vertical-scroll-proportion="0.6069364">
-          <folding />
+        <state line="142" column="6" selection-start="4884" selection-end="4884" vertical-scroll-proportion="0.4409222">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -2824,7 +2845,7 @@
       </state>
       <state key="ModuleStructureConfigurable.UI">
         <settings>
-          <last-edited>actionbarsherlock|Libraries</last-edited>
+          <last-edited>android-utilities|Modules</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
@@ -2860,7 +2881,7 @@
       </state>
       <state key="ScopeChooserConfigurable.UI">
         <settings>
-          <last-edited>ActionBarSherlock</last-edited>
+          <last-edited>GooglePlayServices</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
@@ -2872,6 +2893,7 @@
             <scope name="Android Utilities" />
             <scope name="ActionBarSherlock" />
             <scope name="Android Utilities Copyright" />
+            <scope name="GooglePlayServices" />
           </order>
         </settings>
       </state>

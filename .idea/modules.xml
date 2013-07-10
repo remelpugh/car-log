@@ -2,7 +2,10 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/Car Log/Car Log.iml" filepath="$PROJECT_DIR$/Car Log/Car Log.iml" group="App" />
+      <module fileurl="file://$PROJECT_DIR$/CarLog/CarLog.iml" filepath="$PROJECT_DIR$/CarLog/CarLog.iml" group="App" />
+      <module fileurl="file://$PROJECT_DIR$/modules/android-utilities/libraries/ActionBarSherlock/actionbarsherlock/actionbarsherlock.iml" filepath="$PROJECT_DIR$/modules/android-utilities/libraries/ActionBarSherlock/actionbarsherlock/actionbarsherlock.iml" group="Modules" />
+      <module fileurl="file://$PROJECT_DIR$/modules/android-utilities/android-utilities.iml" filepath="$PROJECT_DIR$/modules/android-utilities/android-utilities.iml" group="Modules" />
+      <module fileurl="file://$PROJECT_DIR$/modules/android-utilities/libraries/google-play-services_lib/google-play-services_lib.iml" filepath="$PROJECT_DIR$/modules/android-utilities/libraries/google-play-services_lib/google-play-services_lib.iml" group="Modules" />
     </modules>
   </component>
 </project>
