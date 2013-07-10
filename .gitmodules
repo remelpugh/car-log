@@ -1,3 +1,4 @@
 [submodule "modules/android-utilities"]
 	path = modules/android-utilities
 	url = git@github.com:remelpugh/android-utilities.git
+	ignore = dirty

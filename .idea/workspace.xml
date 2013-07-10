@@ -1678,13 +1678,22 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="VehicleEditFragment.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="VehicleEditFragment.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/CarLog/src/com/dabay6/android/apps/carlog/ui/vehicle/fragments/VehicleEditFragment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="142" column="6" selection-start="4884" selection-end="4884" vertical-scroll-proportion="0.4409222">
+            <state line="147" column="5" selection-start="5018" selection-end="5018" vertical-scroll-proportion="0.0">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name=".gitmodules" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitmodules">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="3" column="18" selection-start="143" selection-end="143" vertical-scroll-proportion="0.07348703">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -1719,7 +1728,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/../libraries/android-utilities/src/com/utils/android/ui/BaseNavigationDrawerActivity.java" />
         <option value="$PROJECT_DIR$/Car Log/src/com/dabay6/android/apps/carlog/ui/vehicle/VehicleHomeActivity.java" />
         <option value="$PROJECT_DIR$/Car Log/src/com/dabay6/android/apps/carlog/util/NavigationDrawerUtils.java" />
         <option value="$PROJECT_DIR$/../libraries/android-utilities/src/com/utils/android/util/IntentUtils.java" />
@@ -1735,6 +1743,7 @@
         <option value="$PROJECT_DIR$/Car Log/res/values/strings_statistics.xml" />
         <option value="$PROJECT_DIR$/Car Log/res/values/strings.xml" />
         <option value="$PROJECT_DIR$/Car Log/src/com/dabay6/android/apps/carlog/app/CarLogApplication.java" />
+        <option value="$PROJECT_DIR$/.gitmodules" />
       </list>
     </option>
   </component>
@@ -2163,6 +2172,20 @@
             <PATH_ELEMENT>
               <option name="myItemId" value="Modules" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleGroupNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Car Log" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Modules" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleGroupNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="android-utilities" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
@@ -2771,10 +2794,24 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/CarLog/src/com/dabay6/android/apps/carlog/ui/vehicle/fragments/VehicleEditFragment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="142" column="6" selection-start="4884" selection-end="4884" vertical-scroll-proportion="0.4409222">
+        <state line="147" column="5" selection-start="5018" selection-end="5018" vertical-scroll-proportion="0.0">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/modules/android-utilities/.gitmodules">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="18" selection-start="137" selection-end="153" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitmodules">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="18" selection-start="143" selection-end="143" vertical-scroll-proportion="0.07348703">
+          <folding />
         </state>
       </provider>
     </entry>
