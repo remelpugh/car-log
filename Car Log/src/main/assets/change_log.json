@@ -1,0 +1,12 @@
+[
+    {
+        "changes": [
+            {
+                "description": "Initial release."
+            }
+        ],
+        "fixes": [],
+        "version": "1.0",
+        "versionCode": "1"
+    }
+]

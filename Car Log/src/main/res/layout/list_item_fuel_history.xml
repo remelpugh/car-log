@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!--
+  ~ Copyright (c) 2014 Remel Pugh
+  ~
+  ~ Permission is hereby granted, free of charge, to any person obtaining a copy
+  ~ of this software and associated documentation files (the "Software"), to deal
+  ~ in the Software without restriction, including without limitation the rights
+  ~ to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+  ~ copies of the Software, and to permit persons to whom the Software is
+  ~ furnished to do so, subject to the following conditions:
+  ~
+  ~ The above copyright notice and this permission notice shall be included in all
+  ~ copies or substantial portions of the Software.
+  ~
+  ~ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  ~ IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  ~ FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+  ~ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+  ~ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+  ~ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+  ~ SOFTWARE.
+  -->
+
+<com.dabay6.libraries.androidshared.widget.CheckableRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                                android:background="@drawable/util__list_item_selector"
+                                                android:layout_width="match_parent"
+                                                android:layout_height="wrap_content"
+                                                android:minHeight="?android:attr/listPreferredItemHeight"
+                                                android:orientation="vertical"
+                                                android:padding="8dp">
+
+    <TextView
+            android:id="@+id/datetime"
+            style="?android:textAppearanceMedium"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:textColor="@color/text_black" />
+
+    <TextView
+            android:id="@+id/odometer"
+            style="?android:textAppearanceSmall"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@id/datetime"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:textColor="@color/text_light" />
+
+    <TextView
+            android:id="@+id/mpg"
+            style="?android:textAppearanceMedium"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:textColor="@color/text_black" />
+
+    <TextView
+            android:id="@+id/total"
+            style="?android:textAppearanceSmall"
+            android:layout_alignParentRight="true"
+            android:layout_below="@id/mpg"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:textColor="@color/text_light" />
+
+    <TextView
+            android:id="@+id/volume"
+            style="?android:textAppearanceSmall"
+            android:layout_alignParentRight="true"
+            android:layout_below="@id/total"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:textColor="@color/text_light" />
+
+    <TextView
+            android:id="@+id/price"
+            style="?android:textAppearanceSmall"
+            android:layout_alignParentRight="true"
+            android:layout_below="@id/volume"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:textColor="@color/text_light" />
+
+</com.dabay6.libraries.androidshared.widget.CheckableRelativeLayout>
