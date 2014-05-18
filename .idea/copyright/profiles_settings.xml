@@ -1,11 +1,3 @@
 <component name="CopyrightManager">
-  <settings default="Apache License 2.0">
-    <module2copyright>
-      <element module="Android Utilities Copyright" copyright="Apache License 2.0" />
-    </module2copyright>
-    <LanguageOptions name="__TEMPLATE__">
-      <option name="lenBefore" value="110" />
-      <option name="lenAfter" value="110" />
-    </LanguageOptions>
-  </settings>
+  <settings default="MIT" />
 </component>

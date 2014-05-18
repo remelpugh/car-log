@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <string name="reminders">Reminders</string>
-    <string name="reminders_add">Add Reminder</string>
-    <string name="reminders_empty">No reminders created</string>
-    <string name="reminders_new">New Reminder</string>
-</resources>

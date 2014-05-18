@@ -3,11 +3,8 @@
   <component name="EntryPointsManager">
     <entry_points version="2.0" />
   </component>
-  <component name="ProjectKey">
-    <option name="state" value="project://1a0066b7-f6a8-4be0-a65c-54f98845b536" />
-  </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_6" assert-keyword="true" jdk-15="true" project-jdk-name="Android 4.2.2 Google APIs" project-jdk-type="Android SDK">
-    <output url="file://$PROJECT_DIR$/out" />
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_6" assert-keyword="true" jdk-15="true" project-jdk-name="JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
 </project>
 

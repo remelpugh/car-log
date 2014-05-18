@@ -1,3 +1,0 @@
-<component name="DependencyValidationManager">
-  <scope name="GooglePlayServices" pattern="file[google-play-services_lib]:*/" />
-</component>

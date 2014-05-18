@@ -1,3 +1,0 @@
-<component name="DependencyValidationManager">
-  <scope name="Android Utilities Copyright" pattern="file[android-utilities]:src//*||file[android-utilities]:res//*" />
-</component>
