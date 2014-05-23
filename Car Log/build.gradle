@@ -1,8 +1,22 @@
 apply plugin: "android"
 apply from: "${rootDir}/android_common.gradle"
 
+task nativeLibsToJar(type: Zip) {
+    destinationDir file("$buildDir/native-libs")
+    baseName "native-libs"
+    extension "jar"
+    from fileTree(dir: "libs", include: "**/*.so")
+    into "lib/"
+}
+
+tasks.withType(Compile) {
+    compileTask -> compileTask.dependsOn(nativeLibsToJar)
+}
+
 dependencies {
-    compile fileTree(dir: 'libs', include: '*.jar')
+    compile fileTree(dir: "libs", include: "*.jar")
+//    compile files("$buildDir/native-libs/native-libs.jar")
+    compile fileTree(dir: "$buildDir/native-libs", include: "*.jar")
     compile "com.android.support:appcompat-v7:19.1.0"
     compile "com.android.support:gridlayout-v7:19.1.0"
     compile "com.android.support:support-v4:19.1.0"

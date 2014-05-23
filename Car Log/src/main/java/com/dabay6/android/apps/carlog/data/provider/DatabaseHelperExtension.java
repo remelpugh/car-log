@@ -68,7 +68,7 @@ public class DatabaseHelperExtension extends DatabaseHelper {
             final String script = getCreateScript(CarLogProvider.DATABASE_VERSION);
 
             if (!TextUtils.isEmpty(script)) {
-                DataUtils.execMultipleSQL(db, getCreateScript(CarLogProvider.DATABASE_VERSION));
+                DataUtils.execMultipleSQL(db, script);
             }
 
             db.setTransactionSuccessful();
@@ -125,7 +125,7 @@ public class DatabaseHelperExtension extends DatabaseHelper {
      * @param version The current database version.
      */
     private String getCreateScript(final int version) {
-        final String assetName = "database/%d.createItems.sql";
+        final String assetName = "database/%d.create.sql";
 
         try {
             return AssetUtils.read(context, String.format(assetName, version));

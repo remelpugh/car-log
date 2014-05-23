@@ -44,7 +44,7 @@
     <application
             android:allowBackup="true"
             android:backupAgent=".backup.CarLogBackupAgent"
-            android:hardwareAccelerated="true"
+            android:hardwareAccelerated="@bool/isHardwareAccelerated"
             android:icon="@drawable/ic_launcher"
             android:label="@string/app_name"
             android:name=".app.CarLogApplication"

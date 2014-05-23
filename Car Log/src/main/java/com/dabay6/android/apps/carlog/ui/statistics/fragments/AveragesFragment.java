@@ -34,14 +34,13 @@ import com.dabay6.android.apps.carlog.data.provider.StatisticsAverages;
 import com.dabay6.android.apps.carlog.data.provider.StatisticsAverages.Columns;
 import com.dabay6.libraries.androidshared.adapters.DetailsAdapter;
 import com.dabay6.libraries.androidshared.adapters.DetailsItem;
+import com.dabay6.libraries.androidshared.adapters.DetailsItemList;
 import com.dabay6.libraries.androidshared.logging.Logger;
 import com.dabay6.libraries.androidshared.ui.fragments.BaseListFragment;
 import com.dabay6.libraries.androidshared.util.DataUtils;
-import com.dabay6.libraries.androidshared.util.ListUtils;
 import com.dabay6.libraries.androidshared.util.StringUtils;
 
 import java.text.NumberFormat;
-import java.util.List;
 
 /**
  * AveragesFragment
@@ -75,7 +74,7 @@ public class AveragesFragment extends BaseListFragment implements LoaderCallback
     @Override
     public void onLoadFinished(final Loader<Cursor> loader, final Cursor cursor) {
         final DetailsAdapter adapter;
-        final List<DetailsItem> items = ListUtils.newList();
+        final DetailsItemList items = new DetailsItemList();
 
         if (DataUtils.hasData(cursor)) {
             final String[] columnNames = cursor.getColumnNames();
